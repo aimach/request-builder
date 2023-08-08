@@ -164,6 +164,16 @@ function App() {
                 <img src={question} alt="question" width="15" height="15" />
               </button>
             </div>
+            {/* <div>
+              <input type="radio" name="method" value="get" id="get" />
+              <label htmlFor="get">GET</label>
+              <input type="radio" id="post" name="method" value="post" />
+              <label htmlFor="post">POST</label>
+              <input type="radio" id="put" name="method" value="put" />
+              <label htmlFor="put">PUT</label>
+              <input type="radio" id="delete" name="method" value="delete" />
+              <label htmlFor="delete">DELETE</label>
+            </div> */}
             <select
               name="method"
               value={request.method}
