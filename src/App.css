@@ -156,21 +156,18 @@ input::placeholder {
   align-items: flex-end;
 }
 
-.activePath {
+.activeEndpoint {
   background-color: #d8e1f4;
-  border: 1px solid #2567ef;
   border-radius: 0.25rem;
 }
 
 .activeParams {
   background-color: #d8faeb;
-  border: 1px solid #46eca4;
   border-radius: 0.25rem;
 }
 
 .activeQuery {
   background-color: #ffc7dc;
-  border: 1px solid #f7146b;
   border-radius: 0.25rem;
 }
 

@@ -1,7 +1,7 @@
 import "./App.css";
 import { infos, translation } from "./data";
 
-export default function Modal({ setShowModal, modalContent }) {
+export default function Modal({ setShowModal, modalContent, lang }) {
   const information = infos.filter((el) => el.name === modalContent);
   const english = lang === "en";
 

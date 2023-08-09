@@ -14,10 +14,9 @@ function App() {
 
   const initialRequest = {
     host: "localhost",
-    backPort: 5000,
-    frontPort: 3000,
+    port: 5000,
     method: "get",
-    path: "",
+    endpoint: "",
     params: [{ key: "", value: "" }],
     query: [{ key: "", value: "" }],
     body: [{ key: "", value: "" }],
@@ -26,10 +25,9 @@ function App() {
   const [request, setRequest] = useState(initialRequest);
   const [errors, setErrors] = useState({
     host: false,
-    backPort: false,
-    frontPort: false,
+    port: false,
     method: false,
-    path: false,
+    endpoint: false,
     params: false,
     query: false,
     body: false,
@@ -39,10 +37,7 @@ function App() {
 
   const regex = {
     host: /^[ A-Za-z0-9_@./#&+-]*$/g,
-    backPort:
-      /^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$/g,
-    frontPort:
-      /^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$/g,
+    port: /^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$/g,
     method: /^(get|post|put|delete)$/g,
     key: /^[a-zA-z_]+[a-zA-z0-9]*/g,
   };
@@ -103,7 +98,7 @@ function App() {
             ) : null}
             <div className="flex">
               <label className="label-title">
-                {english ? translation.en.backPort : translation.fr.backPort}
+                {english ? translation.en.port : translation.fr.port}
               </label>
               <button
                 onClick={(e) => {
@@ -117,38 +112,12 @@ function App() {
             </div>
             <input
               type="text"
-              name="backPort"
+              name="port"
               placeholder="5000"
-              value={request.backPort}
-              onChange={(e) => verifyData(e, regex.backPort)}
+              value={request.port}
+              onChange={(e) => verifyData(e, regex.port)}
             />
-            {errors.backPort ? (
-              <p>Uniquement des caractères numériques</p>
-            ) : null}
-            <div className="flex">
-              <label className="label-title">
-                {english ? translation.en.frontPort : translation.fr.frontPort}
-              </label>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  setShowModal(true);
-                  setModalContent("port");
-                }}
-              >
-                <img src={question} alt="question" width="15" height="15" />
-              </button>
-            </div>
-            <input
-              type="text"
-              name="frontPort"
-              placeholder="3000"
-              value={request.frontPort}
-              onChange={(e) => verifyData(e, regex.frontPort)}
-            />
-            {errors.frontPort ? (
-              <p>Uniquement des caractères numériques</p>
-            ) : null}
+            {errors.port ? <p>Uniquement des caractères numériques</p> : null}
 
             <div className="flex">
               <label className="label-title">
@@ -164,16 +133,6 @@ function App() {
                 <img src={question} alt="question" width="15" height="15" />
               </button>
             </div>
-            {/* <div>
-              <input type="radio" name="method" value="get" id="get" />
-              <label htmlFor="get">GET</label>
-              <input type="radio" id="post" name="method" value="post" />
-              <label htmlFor="post">POST</label>
-              <input type="radio" id="put" name="method" value="put" />
-              <label htmlFor="put">PUT</label>
-              <input type="radio" id="delete" name="method" value="delete" />
-              <label htmlFor="delete">DELETE</label>
-            </div> */}
             <select
               name="method"
               value={request.method}
@@ -189,9 +148,7 @@ function App() {
                   });
               }}
             >
-              <option value="get" selected>
-                GET
-              </option>
+              <option value="get">GET</option>
               <option value="post">POST</option>
               <option value="put">PUT</option>
               <option value="delete">DELETE</option>
@@ -201,13 +158,13 @@ function App() {
             ) : null}
             <div className="flex">
               <label className="label-title">
-                {english ? translation.en.path : translation.fr.path}
+                {english ? translation.en.endpoint : translation.fr.endpoint}
               </label>
               <button
                 onClick={(e) => {
                   e.preventDefault();
                   setShowModal(true);
-                  setModalContent("path");
+                  setModalContent("endpoint");
                 }}
               >
                 <img src={question} alt="question" width="15" height="15" />
@@ -215,9 +172,11 @@ function App() {
             </div>
             <input
               type="text"
-              name="path"
-              value={request.path}
-              onChange={(e) => setRequest({ ...request, path: e.target.value })}
+              name="endpoint"
+              value={request.endpoint}
+              onChange={(e) =>
+                setRequest({ ...request, endpoint: e.target.value })
+              }
             />
             <div className="flex input-with-add">
               <div>
@@ -477,7 +436,7 @@ function App() {
         </div>
         <Result request={request} lang={lang} />
       </div>
-      <Footer />
+      <Footer lang={lang} />
     </>
   );
 }

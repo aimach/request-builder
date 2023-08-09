@@ -4,8 +4,7 @@ import { useState } from "react";
 
 /* eslint-disable react/prop-types */
 export default function Result({ request, lang }) {
-  const { host, backPort, frontPort, method, path, body, params, query } =
-    request;
+  const { host, port, method, endpoint, body, params, query } = request;
   const english = lang === "en";
 
   // create params string
@@ -18,8 +17,6 @@ export default function Result({ request, lang }) {
     .map((param) => `/${param.value}`)
     .join("");
 
-  console.log(query);
-
   // create query string
   let queryStringFront = "";
   if (query[0].key !== "") {
@@ -31,33 +28,28 @@ export default function Result({ request, lang }) {
   }
 
   // states
-  const [activePath, setActivePath] = useState(false);
+  const [activeEndpoint, setActiveEndpoint] = useState(false);
   const [activeParams, setActiveParams] = useState(false);
   const [activeQuery, setActiveQuery] = useState(false);
 
   return (
     <div className="flex-column result">
       <div className="flex-column">
-        <h3>Frontend</h3>
+        <h3>Client</h3>
         <h5>
           {english ? translation.en.frontIntro : translation.fr.frontIntro}
-        </h5>
-        <h5>
-          {english
-            ? translation.en.frontFirstTitle
-            : translation.fr.frontFirstTitle}
         </h5>
         <div className="flex result-container">
           <span className="methodStyle">{method}</span>
           <p>
             http://
-            {host}:{frontPort}
+            {host}:{port}
             <span
-              onMouseEnter={() => setActivePath(true)}
-              onMouseLeave={() => setActivePath(false)}
-              className={activePath ? "activePath" : ""}
+              onMouseEnter={() => setActiveEndpoint(true)}
+              onMouseLeave={() => setActiveEndpoint(false)}
+              className={activeEndpoint ? "activeEndpoint" : ""}
             >
-              {path}
+              {endpoint}
             </span>
             <span
               onMouseEnter={() => setActiveParams(true)}
@@ -101,25 +93,18 @@ export default function Result({ request, lang }) {
           <div> {english ? translation.en.noBody : translation.fr.noBody}</div>
         )}
       </div>
-      <div className="flex-column">
-        <h3>Backend</h3>
+      <div className="flex-column ">
+        <h3>Server</h3>
         <h5>{english ? translation.en.backIntro : translation.fr.backIntro}</h5>
-        <h5>
-          {english
-            ? translation.en.backFirstTitle
-            : translation.fr.backFirstTitle}
-        </h5>
         <div className="flex result-container">
           <span className="methodStyle">{method}</span>
           <p>
-            http://
-            {host}:{backPort}
             <span
-              onMouseEnter={() => setActivePath(true)}
-              onMouseLeave={() => setActivePath(false)}
-              className={activePath ? "activePath" : ""}
+              onMouseEnter={() => setActiveEndpoint(true)}
+              onMouseLeave={() => setActiveEndpoint(false)}
+              className={activeEndpoint ? "activeEndpoint" : ""}
             >
-              {path}
+              {endpoint}
             </span>
             <span
               onMouseEnter={() => setActiveParams(true)}
@@ -130,12 +115,12 @@ export default function Result({ request, lang }) {
             </span>
           </p>
         </div>
-        <div>
+        <div className={activeParams ? "activeParams" : ""}>
           <h5>
             {english ? translation.en.backParams : translation.fr.backParams}
           </h5>
           {params[0].key !== "" ? (
-            <pre className={activeParams ? "activeParams" : ""}>
+            <pre>
               &#123;
               {params
                 .filter((params) => params.key !== "")
@@ -153,12 +138,12 @@ export default function Result({ request, lang }) {
             <div>&#123;&#125;</div>
           )}
         </div>
-        <div>
+        <div className={activeQuery ? "activeQuery" : ""}>
           <h5>
             {english ? translation.en.backQuery : translation.fr.backQuery}
           </h5>
           {query[0].key !== "" ? (
-            <pre className={activeQuery ? "activeQuery" : ""}>
+            <pre>
               &#123;
               {query
                 .filter((query) => query.key !== "")
