@@ -58,7 +58,8 @@ button:focus {
 }
 
 input,
-select {
+select,
+textarea {
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 1px solid #d9d9db;
@@ -67,6 +68,10 @@ select {
 }
 
 input:hover {
+  outline: 1px solid #8c2198;
+}
+
+textarea:hover {
   outline: 1px solid #8c2198;
 }
 

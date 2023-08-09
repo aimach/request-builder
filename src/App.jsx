@@ -9,13 +9,15 @@ import { translation } from "./data";
 import Footer from "./Footer";
 
 function App() {
+  // LANGUAGE HANDLERS
   const [lang, setLang] = useState("en");
   const english = lang === "en";
 
+  // REQUEST STATE
   const initialRequest = {
     host: "localhost",
     port: 5000,
-    method: "get",
+    method: "post",
     endpoint: "",
     params: [{ key: "", value: "" }],
     query: [{ key: "", value: "" }],
@@ -23,6 +25,25 @@ function App() {
   };
 
   const [request, setRequest] = useState(initialRequest);
+
+  // RAW BODY STATE
+  const [rawBody, setRawBody] = useState(false);
+  const [rawBodyContent, setRawBodyContent] = useState("");
+
+  const transformRawBody = (value) => {
+    setRawBodyContent(value);
+    console.log(rawBodyContent);
+    const data = JSON.parse(value);
+    const keys = Object.keys(data);
+    const values = Object.values(data);
+    for (let i = 0; i < keys.length; i++) {
+      const keyAlreadyExists = request.body.some((el) => el.key === keys[i]);
+      if (!keyAlreadyExists)
+        request.body.push({ key: keys[i], value: values[i] });
+    }
+  };
+
+  // ERROR STATE
   const [errors, setErrors] = useState({
     host: false,
     port: false,
@@ -32,6 +53,8 @@ function App() {
     query: false,
     body: false,
   });
+
+  // MODAL HANDLERS
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState();
 
@@ -194,77 +217,94 @@ function App() {
                 </button>
               </div>
               {request.method === "get" ? null : (
-                <button
-                  type="button"
-                  onClick={() =>
-                    setRequest({
-                      ...request,
-                      body: [...request.body, { key: "", value: "" }],
-                    })
-                  }
-                  disabled={request.method === "get"}
-                  className="button-add"
-                >
-                  {english ? translation.en.add : translation.fr.add}
-                </button>
+                <div>
+                  <button
+                    type="button"
+                    className="button-add"
+                    onClick={() => setRawBody(!rawBody)}
+                  >
+                    {rawBody ? "Key/Value" : "Raw"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setRequest({
+                        ...request,
+                        body: [...request.body, { key: "", value: "" }],
+                      })
+                    }
+                    disabled={request.method === "get"}
+                    className="button-add"
+                  >
+                    {english ? translation.en.add : translation.fr.add}
+                  </button>
+                </div>
               )}
             </div>
             <div className="flex-column">
-              {request.body.map((element, index) => {
-                return (
-                  <div key={index} className="key-value-container">
-                    {english ? translation.en.key : translation.fr.key}
-                    <input
-                      type="text"
-                      name="bodyKey"
-                      value={request.body[index].key}
-                      onChange={(e) => {
-                        request.body[index].key = e.target.value;
-                        setRequest({
-                          ...request,
-                          body: [...request.body],
-                        });
-                      }}
-                      disabled={request.method === "get"}
-                    />
-                    {english ? translation.en.value : translation.fr.value}
-                    <input
-                      type="text"
-                      name="bodyValue"
-                      value={request.body[index].value}
-                      onChange={(e) => {
-                        request.body[index].value = e.target.value;
-                        setRequest({
-                          ...request,
-                          body: [...request.body],
-                        });
-                      }}
-                      disabled={request.method === "get"}
-                    />
-                    {request.body.length > 1 ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          const newBody = request.body.filter(
-                            (el) => el !== element
-                          );
+              {rawBody ? (
+                <textarea
+                  name="endpoint"
+                  value={rawBodyContent}
+                  onChange={(e) => transformRawBody(e.target.value)}
+                />
+              ) : (
+                request.body.map((element, index) => {
+                  return (
+                    <div key={index} className="key-value-container">
+                      {english ? translation.en.key : translation.fr.key}
+                      <input
+                        type="text"
+                        name="bodyKey"
+                        value={request.body[index].key}
+                        onChange={(e) => {
+                          request.body[index].key = e.target.value;
                           setRequest({
                             ...request,
-                            body: newBody,
+                            body: [...request.body],
                           });
                         }}
-                      >
-                        <img
-                          src={close}
-                          alt="question"
-                          width="15"
-                          height="15"
-                        />
-                      </button>
-                    ) : null}
-                  </div>
-                );
-              })}
+                        disabled={request.method === "get"}
+                      />
+                      {english ? translation.en.value : translation.fr.value}
+                      <input
+                        type="text"
+                        name="bodyValue"
+                        value={request.body[index].value}
+                        onChange={(e) => {
+                          request.body[index].value = e.target.value;
+                          setRequest({
+                            ...request,
+                            body: [...request.body],
+                          });
+                        }}
+                        disabled={request.method === "get"}
+                      />
+                      {request.body.length > 1 ? (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const newBody = request.body.filter(
+                              (el) => el !== element
+                            );
+                            setRequest({
+                              ...request,
+                              body: newBody,
+                            });
+                          }}
+                        >
+                          <img
+                            src={close}
+                            alt="question"
+                            width="15"
+                            height="15"
+                          />
+                        </button>
+                      ) : null}
+                    </div>
+                  );
+                })
+              )}
             </div>
             <div className="flex input-with-add">
               <div>
