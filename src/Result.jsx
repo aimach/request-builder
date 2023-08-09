@@ -35,15 +35,16 @@ export default function Result({ request, lang }) {
   return (
     <div className="flex-column result">
       <div className="flex-column">
-        <h3>Client</h3>
+        <h3>{english ? translation.en.client : translation.fr.client}</h3>
         <h5>
-          {english ? translation.en.frontIntro : translation.fr.frontIntro}
+          {english ? translation.en.clientIntro : translation.fr.clientIntro}
         </h5>
         <div className="flex result-container">
           <span className="methodStyle">{method}</span>
           <p>
             http://
-            {host}:{port}
+            {host}
+            {port === "" ? "" : `:${port}`}
             <span
               onMouseEnter={() => setActiveEndpoint(true)}
               onMouseLeave={() => setActiveEndpoint(false)}
@@ -68,22 +69,23 @@ export default function Result({ request, lang }) {
           </p>
         </div>
         <h5>
-          {english
-            ? translation.en.frontScndTitle
-            : translation.fr.frontScndTitle}
+          {english ? translation.en.clientTitle : translation.fr.clientTitle}
         </h5>
         {method !== "get" ? (
           body[0].key !== "" ? (
             <pre>
               &#123;
-              {body.map((el, index) => {
-                return (
-                  <p key={index}>
-                    {"    "}
-                    {el.key} : {el.value}
-                  </p>
-                );
-              })}
+              {body
+                .filter((el) => el.key !== "")
+                .map((el, index) => {
+                  return (
+                    <p key={index}>
+                      {"    "}
+                      {el.key} :{" "}
+                      {parseInt(el.value) ? `${el.value}` : `"${el.value}"`}
+                    </p>
+                  );
+                })}
               &#125;
             </pre>
           ) : (
@@ -94,17 +96,20 @@ export default function Result({ request, lang }) {
         )}
       </div>
       <div className="flex-column ">
-        <h3>Server</h3>
-        <h5>{english ? translation.en.backIntro : translation.fr.backIntro}</h5>
+        <h3>{english ? translation.en.server : translation.fr.server}</h3>
+        <h5>
+          {english ? translation.en.serverIntro : translation.fr.serverIntro}
+        </h5>
         <div className="flex result-container">
           <span className="methodStyle">{method}</span>
           <p>
+            "
             <span
               onMouseEnter={() => setActiveEndpoint(true)}
               onMouseLeave={() => setActiveEndpoint(false)}
               className={activeEndpoint ? "activeEndpoint" : ""}
             >
-              {endpoint}
+              {endpoint === "" ? "/" : endpoint}
             </span>
             <span
               onMouseEnter={() => setActiveParams(true)}
@@ -113,6 +118,7 @@ export default function Result({ request, lang }) {
             >
               {paramsStringBack}
             </span>
+            "
           </p>
         </div>
         <div className={activeParams ? "activeParams" : ""}>
@@ -124,14 +130,13 @@ export default function Result({ request, lang }) {
               &#123;
               {params
                 .filter((params) => params.key !== "")
-                .map((el, index) => {
-                  return (
-                    <p key={index}>
-                      {"    "}
-                      {el.key} : {el.value}
-                    </p>
-                  );
-                })}
+                .map((el, index) => (
+                  <p key={index}>
+                    {"    "}
+                    {el.key} :{" "}
+                    {parseInt(el.value) ? `${el.value}` : `"${el.value}"`}
+                  </p>
+                ))}
               &#125;
             </pre>
           ) : (
@@ -147,14 +152,13 @@ export default function Result({ request, lang }) {
               &#123;
               {query
                 .filter((query) => query.key !== "")
-                .map((el, index) => {
-                  return (
-                    <p key={index}>
-                      {"    "}
-                      {el.key} : {el.value}
-                    </p>
-                  );
-                })}
+                .map((el, index) => (
+                  <p key={index}>
+                    {"    "}
+                    {el.key} :{" "}
+                    {parseInt(el.value) ? `${el.value}` : `"${el.value}"`}
+                  </p>
+                ))}
               &#125;
             </pre>
           ) : (

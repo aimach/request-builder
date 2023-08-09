@@ -16,8 +16,8 @@ export const infos = [
   },
   {
     name: "endpoint",
-    en: "The endpoint identifies the resource on the server. When combined with the value of the 'host' header, it forms the complete URL of the request. For example, if you have an endpoint '/api/users', and the host is 'www.example.com', the complete URI of the request will be 'http://www.example.com/api/users'.",
-    fr: "Le point d'accès (endpoint) identifie la ressource sur le serveur. Combiné avec la valeur de l'en-tête 'host', il forme l'URI complète de la requête. Par exemple, si tu as un endpoint '/api/users', et que le host est 'www.example.com', l'URI complète de la requête sera 'http://www.example.com/api/users'",
+    en: "The endpoint identifies the resource on the server. When combined with the value of the 'host' header, it forms the complete URL of the request. For example, if you have an endpoint '/api/users', and the host is 'www.example.com', the complete URL of the request will be 'http://www.example.com/api/users'.",
+    fr: "Le point d'accès (endpoint) identifie la ressource sur le serveur. Combiné avec la valeur de l'en-tête 'host', il forme l'URL complète de la requête. Par exemple, si tu as un endpoint '/api/users', et que le host est 'www.example.com', l'URL complète de la requête sera 'http://www.example.com/api/users'",
   },
   {
     name: "body",
@@ -54,13 +54,13 @@ export const translation = {
     query: "Query",
     key: "key",
     value: "value",
-    frontIntro: "The request you sent with fetch, axios or Postman",
-    frontFirstTitle: "Method and URL",
-    frontScndTitle: "req.body you must sent",
+    client: "Client",
+    server: "Server",
+    clientIntro: "The request you sent with fetch, axios or Postman",
+    clientTitle: "req.body you must sent",
     noBody: "No body in get method",
-    backIntro:
+    serverIntro:
       "The route you must have in your router and the params and query objects of your request",
-    backFirstTitle: "Method and route",
     backParams: "req.params you get",
     backQuery: "req.query you get",
     close: "Close",
@@ -84,11 +84,13 @@ export const translation = {
     query: "Query",
     key: "clé",
     value: "valeur",
-    frontIntro: "La requête que tu envoies avec fetch, axios ou Postman",
+    client: "Client",
+    server: "Serveur",
+    clientIntro: "La requête que tu envoies avec fetch, axios ou Postman",
     frontFirstTitle: "Méthode et URL",
-    frontScndTitle: "req.body que tu dois envoyer",
+    clientTitle: "req.body que tu dois envoyer",
     noBody: "Pas de body avec la méthode GET",
-    backIntro:
+    serverIntro:
       "La route que tu as dans ton router et les objets params et query de ta requête",
     backFirstTitle: "Méthode et route",
     backParams: "req.params que tu reçois",
