@@ -1,0 +1,48 @@
+.tutoStyle {
+  position: relative;
+  padding: 1rem;
+  z-index: 1;
+  box-shadow: 0 0 0 10000px #000000d9;
+  border-radius: 1rem;
+}
+
+.button-tuto-container {
+  position: fixed;
+  z-index: 2;
+  left: 40%;
+}
+
+.button-tuto {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #8c2198;
+  color: white;
+  border-radius: 1rem;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.tutorial-content {
+  padding: 2rem;
+  background-color: #e7cdea;
+  color: #8c2198;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 2;
+  position: absolute;
+
+  font-size: 1.25rem;
+}
+
+.right {
+  right: 5rem;
+  top: 10rem;
+  width: 40%;
+}
+
+.left {
+  left: 5rem;
+  top: 20rem;
+  width: 40%;
+}

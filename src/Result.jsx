@@ -1,9 +1,10 @@
 import "./App.css";
+import "./tutorial.css";
 import { translation } from "./data";
 import { useState } from "react";
 
 /* eslint-disable react/prop-types */
-export default function Result({ request, lang }) {
+export default function Result({ request, lang, step }) {
   const { host, port, method, endpoint, body, params, query } = request;
   const english = lang === "en";
 
@@ -34,7 +35,7 @@ export default function Result({ request, lang }) {
 
   return (
     <div className="flex-column result">
-      <div className="flex-column">
+      <div className={`flex-column ${step === 6 ? `tutoStyle` : ""} `}>
         <h3>{english ? translation.en.client : translation.fr.client}</h3>
         <h5>
           {english ? translation.en.clientIntro : translation.fr.clientIntro}
@@ -95,7 +96,7 @@ export default function Result({ request, lang }) {
           <div> {english ? translation.en.noBody : translation.fr.noBody}</div>
         )}
       </div>
-      <div className="flex-column ">
+      <div className={`flex-column ${step === 7 ? `tutoStyle` : ""} `}>
         <h3>{english ? translation.en.server : translation.fr.server}</h3>
         <h5>
           {english ? translation.en.serverIntro : translation.fr.serverIntro}

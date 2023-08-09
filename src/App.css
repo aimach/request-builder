@@ -209,15 +209,6 @@ h3 + h5 {
   text-decoration: underline;
 }
 
-.introduction {
-  margin: 1rem;
-  padding: 1rem;
-  background-color: #e7cdea;
-  border: 1px solid #8c2198;
-  color: #8c2198;
-  border-radius: 1rem;
-}
-
 @media screen and (max-width: 1000px) {
   .title-bar {
     display: flex;
