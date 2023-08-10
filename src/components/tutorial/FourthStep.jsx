@@ -1,11 +1,13 @@
+import { tutorial } from "../../data";
+
 export default function FourthStep() {
   return (
-    <p>
-      In the first part, you can fill in the fields that will form the URL of
-      your request: host, port, method and endpoint.
+    <>
+      <h3>{tutorial.fr.fourthStep.title}</h3>
       <br />
-      With the example, we have : localhost for host, 5000 for port, get method
-      and the endpoint "/api/clothes".
-    </p>
+      <p>{tutorial.fr.fourthStep.firstContent}</p>
+      <br />
+      <p>{tutorial.fr.fourthStep.example}</p>
+    </>
   );
 }

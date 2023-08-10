@@ -100,3 +100,63 @@ export const translation = {
     for: "pour",
   },
 };
+
+export const tutorial = {
+  en: {},
+  fr: {
+    firstStep: {
+      title: "Bienvenue sur Request builder !",
+      firstContent:
+        "Je suis un outil pour t'aider à construire tes requêtes HTTP et te permettre de mieux comprendre leur structure dans ExpressJS.",
+      secondContent:
+        "Cet outil se veut volontairement simple car il est à destination de ceux qui apprennent à faire des requêtes et à utiliser ExpressJS. Il n'est pas possible de faire des requêtes avec une URL complexe, l'objectif de cet outil est de t'aider à comprendre la structure d'une requête et comment tu dois l'utiliser dans ton code.",
+      thirdContent: "Je suis développé et maintenu par",
+    },
+    secondStep: {
+      title: "Language",
+      firstContent: "Ici, tu peux choisir le language : anglais ou français",
+    },
+    thirdStep: {
+      title: "Le formulaire",
+      firstContent:
+        "A gauche, il y a un formulaire où tu peux renseigner les informations sur ta requête.",
+      example:
+        "Tu peux voir que des champs sont déjà remplis : pour l'example de ce tutoriel, nous souhaitons récupérer de l'API tous les westerns en noir et blanc dans une limite de 10 résultats.",
+    },
+    fourthStep: {
+      title: "Adresse de la requête",
+      firstContent:
+        "Dans la première partie, tu peux remplir les champs qui formeront l'URL de ta requête : l'host, le port, la méthode (GET, POST, PUT ou DELETE) et le point d'accès (endpoint).",
+      example:
+        "Example : nous avons localhost comme host, 5000 comme port, GET comme méthode et l'endpoint '/api/movies'.",
+    },
+    fifthStep: {
+      title: "Informations de la requête",
+      firstContent:
+        "Dans la seconde partie, tu peux remplir les champs qui seront les informations que tu souhaites envoyer dans ta requête.",
+      secondContent:
+        "Tu peux ajouter un body (excepté pour la méthode GET), des params et query. Le formulaire fonctionne avec des champs de type clé/valeur. Tu peux ajouter des champs avec le boutton 'Ajouter' ou en supprimer.",
+      example:
+        "Example : il n'y a pas de body car nous utilisons la méthode GET. Nous avons 2 params (type et color) et 1 query (limit)",
+    },
+    sixthStep: {
+      title: "Le resultat",
+      firstContent:
+        "A droite, sont affichés un ensemble d'informations qui vont te permettrent de bien comprendre ce que tu dois envoyer côté client et ce que tu reçois côté serveur.",
+    },
+    seventhStep: {
+      title: "Coté client",
+      firstContent:
+        "Dans l'encadré, tu peux voir la méthode et l'adresse que tu utiliseras dans fetch, axios ou Postman. Si tu passes la souris sur l'adresse, les différents éléments seront surlignés et tu verras leur pendant côté serveur. Si tu as un body, il s'affichera sous l'encadré.",
+      example:
+        "Dans notre example, il n'y a pas de body car nous utilisons la méthode GET.",
+    },
+    heigthStep: {
+      title: "Coté serveur",
+      firstContent:
+        "Dans l'encadré, tu peux voir la méthode et la route que tu devrais avoir dans ton router.",
+      secondContent:
+        "Les objets params et query sont affichés afin que tu puisses voir ce que tu reçois du côté backend. Là aussi, si tu passes la souris sur les éléments de la route, ils seront surlignés et tu verras leur pendant côté client.",
+    },
+  },
+};

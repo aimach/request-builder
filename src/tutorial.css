@@ -23,26 +23,46 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.button-tuto:hover {
+  background-color: #46eca4;
+}
+
 .tutorial-content {
   padding: 2rem;
   background-color: #e7cdea;
   color: #8c2198;
-  border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 2;
   position: absolute;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: justify;
+}
 
-  font-size: 1.25rem;
+.tutorial-content > p > a {
+  text-decoration: none;
+  color: #8c2198;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-weight: 600;
+}
+
+.tutorial-content > p > a:hover {
+  text-decoration: underline;
 }
 
 .right {
-  right: 5rem;
+  right: 0;
   top: 10rem;
   width: 40%;
+  border-radius: 1rem 0 0 1rem;
 }
 
 .left {
-  left: 5rem;
+  left: 0;
   top: 20rem;
   width: 40%;
+  border-radius: 0 1rem 1rem 0;
 }

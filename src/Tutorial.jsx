@@ -8,6 +8,7 @@ import FourthStep from "./components/tutorial/FourthStep";
 import FifthStep from "./components/tutorial/FifthStep";
 import SixthStep from "./components/tutorial/SixthStep";
 import SeventhStep from "./components/tutorial/SeventhStep";
+import HeightStep from "./components/tutorial/HeigthStep";
 export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
   const english = lang === "en";
 
@@ -22,12 +23,12 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
         >
           Previous
         </button>
-        {step < 7 ? (
+        {step < 8 ? (
           <button
             type="button"
             onClick={() => {
               setStep(step + 1);
-              step === 7 ? setShowTutorial(false) : setShowTutorial(true);
+              step === 8 ? setShowTutorial(false) : setShowTutorial(true);
             }}
             className="button-tuto"
           >
@@ -54,6 +55,7 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
         {step === 5 && <FifthStep lang={lang} />}
         {step === 6 && <SixthStep lang={lang} />}
         {step === 7 && <SeventhStep lang={lang} />}
+        {step === 8 && <HeightStep lang={lang} />}
       </div>
     </>
   );

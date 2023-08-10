@@ -49,6 +49,9 @@ button:focus {
 
 .result > div {
   padding: 1rem;
+  gap: 3rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .result-container {
@@ -198,7 +201,7 @@ h3 + h5 {
   font-weight: 600;
 }
 
-.footer > a:first-child {
+.footer > a {
   text-decoration: none;
   color: #46eca4;
   padding-left: 0.5rem;

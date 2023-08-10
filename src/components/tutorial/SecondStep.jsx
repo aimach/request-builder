@@ -1,3 +1,11 @@
+import { tutorial } from "../../data";
+
 export default function SecondStep() {
-  return <p>Here, you can choose your language : english or french. </p>;
+  return (
+    <>
+      <h3>{tutorial.fr.secondStep.title}</h3>
+      <br />
+      <p>{tutorial.fr.secondStep.firstContent}</p>
+    </>
+  );
 }

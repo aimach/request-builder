@@ -26,10 +26,10 @@ function Form({ lang, setShowModal, setModalContent, step, showTutorial }) {
           host: "localhost",
           port: 5000,
           method: "get",
-          endpoint: "/api/clothes",
+          endpoint: "/api/movies",
           params: [
-            { key: "category", value: "shoes" },
-            { key: "color", value: "red" },
+            { key: "type", value: "western" },
+            { key: "color", value: "false" },
           ],
           query: [{ key: "limit", value: "10" }],
           body: [{ key: "", value: "" }],
@@ -79,7 +79,11 @@ function Form({ lang, setShowModal, setModalContent, step, showTutorial }) {
           >
             {english ? translation.en.clear : translation.fr.clear}
           </button>
-          <div className={step === 4 ? `tutoStyle` : ""}>
+          <div
+            className={`builder-form flex-column ${
+              step === 4 ? `tutoStyle` : ""
+            }`}
+          >
             <div className="flex">
               <label className="label-title">
                 {english ? translation.en.host : translation.fr.host}
@@ -188,7 +192,11 @@ function Form({ lang, setShowModal, setModalContent, step, showTutorial }) {
               }
             />
           </div>
-          <div className={step === 5 ? `tutoStyle` : ""}>
+          <div
+            className={`builder-form flex-column ${
+              step === 5 ? `tutoStyle` : ""
+            }`}
+          >
             <div className="flex input-with-add">
               <div>
                 <label className="label-title">
