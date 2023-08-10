@@ -1,5 +1,9 @@
 body {
   background-color: #f5f6f8;
+  background-image: url("./assets/logo-bg.svg");
+  background-repeat: no-repeat;
+  background-size: 150%;
+  background-position: 10%;
 }
 
 button {
@@ -152,12 +156,12 @@ input::placeholder {
 }
 
 .content-modal {
-  background-color: #fefefe;
+  background: #fefefe url("./assets/question-bg.png") no-repeat right 50%;
   width: 50vw;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .activeEndpoint {
@@ -199,7 +203,8 @@ h3 + h5 {
   margin: auto;
   align-items: center;
   color: #8c2198;
-  font-weight: 600;
+  font-size: 0.75rem;
+  margin: 1rem;
 }
 
 .footer > a {
@@ -207,6 +212,10 @@ h3 + h5 {
   color: #46eca4;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.footer > a > img {
+  width: 30px;
 }
 
 .lang-active {
@@ -233,9 +242,5 @@ h3 + h5 {
   }
   .builder-container > div {
     width: 78%;
-  }
-
-  .footer {
-    width: 70%;
   }
 }
