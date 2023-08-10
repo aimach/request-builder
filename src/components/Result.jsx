@@ -89,7 +89,7 @@ export default function Result({ request, lang, step }) {
                         el.value === "true" ||
                         el.value === "false"
                           ? `${el.value}`
-                          : `"${el.value}"`}{" "}
+                          : `"${el.value}"`}
                       </p>
                     );
                   })}
@@ -148,7 +148,7 @@ export default function Result({ request, lang, step }) {
                       el.value === "true" ||
                       el.value === "false"
                         ? `${el.value}`
-                        : `"${el.value}"`}{" "}
+                        : `"${el.value}"`}
                     </p>
                   ))}
                 &#125;

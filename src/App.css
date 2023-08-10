@@ -214,6 +214,10 @@ h3 + h5 {
   padding-right: 0.5rem;
 }
 
+.footer > a:hover {
+  text-decoration: underline;
+}
+
 .footer > a > img {
   width: 30px;
 }

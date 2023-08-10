@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 export default function Modal({ setShowModal, modalContent, lang }) {
   const english = lang === "en";
-  console.log(infos.fr);
 
   return (
     <div className="background-modal">
