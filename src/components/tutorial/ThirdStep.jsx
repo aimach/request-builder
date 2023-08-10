@@ -1,13 +1,24 @@
 import { tutorial } from "../../data";
 
-export default function ThirdStep() {
+export default function ThirdStep({ lang }) {
+  const english = lang === "en";
   return (
     <>
-      <h3>{tutorial.fr.thirdStep.title}</h3>
+      <h3>
+        {english ? tutorial.en.thirdStep.title : tutorial.fr.thirdStep.title}
+      </h3>
       <br />
-      <p>{tutorial.fr.thirdStep.firstContent}</p>
+      <p>
+        {english
+          ? tutorial.en.thirdStep.firstContent
+          : tutorial.fr.thirdStep.firstContent}
+      </p>
       <br />
-      <p>{tutorial.fr.thirdStep.example}</p>
+      <p>
+        {english
+          ? tutorial.en.thirdStep.example
+          : tutorial.fr.thirdStep.example}
+      </p>
     </>
   );
 }

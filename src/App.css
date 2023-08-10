@@ -105,6 +105,7 @@ input::placeholder {
   color: white;
   border-radius: 5px;
   transition: background-color 0.2s;
+  padding: 0.5rem;
 }
 
 .button-add:hover {

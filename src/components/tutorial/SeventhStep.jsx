@@ -1,13 +1,26 @@
 import { tutorial } from "../../data";
 
-export default function SeventhStep() {
+export default function SeventhStep({ lang }) {
+  const english = lang === "en";
   return (
     <>
-      <h3>{tutorial.fr.seventhStep.title}</h3>
+      <h3>
+        {english
+          ? tutorial.en.seventhStep.title
+          : tutorial.fr.seventhStep.title}
+      </h3>
       <br />
-      <p>{tutorial.fr.seventhStep.firstContent}</p>
+      <p>
+        {english
+          ? tutorial.en.seventhStep.firstContent
+          : tutorial.fr.seventhStep.firstContent}
+      </p>
       <br />
-      <p>{tutorial.fr.seventhStep.example}</p>
+      <p>
+        {english
+          ? tutorial.en.seventhStep.example
+          : tutorial.fr.seventhStep.example}
+      </p>
     </>
   );
 }

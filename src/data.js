@@ -102,7 +102,62 @@ export const translation = {
 };
 
 export const tutorial = {
-  en: {},
+  en: {
+    firstStep: {
+      title: "Welcome to Request builder!",
+      firstContent:
+        "I am a tool to help you build your HTTP requests and better understand their structure in ExpressJS.",
+      secondContent:
+        "This tool is intentionally kept simple as it is intended for those who are learning to make requests and use ExpressJS. It's not possible to create requests with complex URLs. The purpose of this tool is to help you understand the structure of a request and how to use it in your code.",
+      thirdContent: "I am developed and maintained by",
+    },
+    secondStep: {
+      title: "Language",
+      firstContent: "Here, you can choose the language: English or French",
+    },
+    thirdStep: {
+      title: "The Form",
+      firstContent:
+        "On the left, there's a form where you can provide informations about your request.",
+      example:
+        "You can see that some fields are already filled: for the example of this tutorial, we want to retrieve all black and white western movies from the API, with a limit of 10 results.",
+    },
+    fourthStep: {
+      title: "Request Address",
+      firstContent:
+        "In the first part, you can fill in the fields that will form your request URL: the host, port, method (GET, POST, PUT, or DELETE), and endpoint.",
+      example:
+        "Example: we have 'localhost' as the host, '5000' as the port, 'GET' as the method, and the endpoint '/api/movies'.",
+    },
+    fifthStep: {
+      title: "Request Information",
+      firstContent:
+        "In the second part, you can fill in the fields with the informations you want to send in your request.",
+      secondContent:
+        "You can add a body (except for the GET method), params, and query. The form works with key/value pair fields. You can add fields using the 'Add' button or remove them.",
+      example:
+        "Example: there is no body since we're using the GET method. We have 2 params (type and color) and 1 query (limit).",
+    },
+    sixthStep: {
+      title: "The Result",
+      firstContent:
+        "On the right, a set of information is displayed that will help you understand what you need to send on the client side and what you'll receive on the server side.",
+    },
+    seventhStep: {
+      title: "Client Side",
+      firstContent:
+        "In the box, you can see the method and the address you'll use in fetch, axios, or Postman. If you hover over the address, the different elements will be highlighted, and you'll see their counterparts on the server side. If you have a body, it will be displayed below the box.",
+      example:
+        "In our example, there's no body since we're using the GET method.",
+    },
+    eighthStep: {
+      title: "Server Side",
+      firstContent:
+        "In the box, you can see the method and the route you should have in your router.",
+      secondContent:
+        "The params and query objects are displayed so you can see what you receive on the backend side. Similarly, if you hover over the route elements, they will be highlighted, and you'll see their counterparts on the client side.",
+    },
+  },
   fr: {
     firstStep: {
       title: "Bienvenue sur Request builder !",
@@ -151,7 +206,7 @@ export const tutorial = {
       example:
         "Dans notre example, il n'y a pas de body car nous utilisons la méthode GET.",
     },
-    heigthStep: {
+    eighthStep: {
       title: "Coté serveur",
       firstContent:
         "Dans l'encadré, tu peux voir la méthode et la route que tu devrais avoir dans ton router.",

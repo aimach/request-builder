@@ -1,11 +1,18 @@
 import { tutorial } from "../../data";
 
-export default function SecondStep() {
+export default function SecondStep({ lang }) {
+  const english = lang === "en";
   return (
     <>
-      <h3>{tutorial.fr.secondStep.title}</h3>
+      <h3>
+        {english ? tutorial.en.secondStep.title : tutorial.fr.secondStep.title}
+      </h3>
       <br />
-      <p>{tutorial.fr.secondStep.firstContent}</p>
+      <p>
+        {english
+          ? tutorial.en.secondStep.firstContent
+          : tutorial.fr.secondStep.firstContent}
+      </p>
     </>
   );
 }
