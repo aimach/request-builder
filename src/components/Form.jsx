@@ -59,6 +59,7 @@ export default function Form({
     host: /^[ A-Za-z0-9_@./#&+-]*$/g,
     port: /^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$/g,
     method: /^(get|post|put|delete)$/g,
+    endpoint: /^[ A-Za-z0-9_@./#&+-]*$/g,
     key: /^[a-zA-z_]+[a-zA-z0-9]*/g,
   };
 
@@ -70,6 +71,14 @@ export default function Form({
       setErrors({ ...errors, [e.target.name]: true });
     }
   };
+
+  // DISABLE ENTER KEY BECAUSE HELP BUTTONS
+  addEventListener("keypress", function (e) {
+    if (e.key === 13) {
+      e.preventDefault();
+      return false;
+    }
+  });
 
   return (
     <div className="flex builder-container">
@@ -106,16 +115,20 @@ export default function Form({
                 <img src={question} alt="question" width="15" height="15" />
               </button>
             </div>
-            <input
-              type="text"
-              name="host"
-              placeholder="localhost"
-              value={request.host}
-              onChange={(e) => verifyData(e, regex.host)}
-            />
-            {errors.host ? (
-              <p>Uniquement des caractères alphanumeriques</p>
-            ) : null}
+            <div>
+              <input
+                type="text"
+                name="host"
+                placeholder="localhost"
+                value={request.host}
+                onChange={(e) => verifyData(e, regex.host)}
+              />
+              {errors.host ? (
+                <p className="error">
+                  Certains caractères spéciaux ne sont pas acceptés
+                </p>
+              ) : null}
+            </div>
             <div className="flex">
               <label className="label-title">
                 {english ? translation.en.port : translation.fr.port}
@@ -130,14 +143,18 @@ export default function Form({
                 <img src={question} alt="question" width="15" height="15" />
               </button>
             </div>
-            <input
-              type="text"
-              name="port"
-              placeholder="5000"
-              value={request.port}
-              onChange={(e) => verifyData(e, regex.port)}
-            />
-            {errors.port ? <p>Uniquement des caractères numériques</p> : null}
+            <div>
+              <input
+                type="text"
+                name="port"
+                placeholder="5000"
+                value={request.port}
+                onChange={(e) => verifyData(e, regex.port)}
+              />
+              {errors.port ? (
+                <p className="error">Uniquement des caractères numériques</p>
+              ) : null}
+            </div>
 
             <div className="flex">
               <label className="label-title">
@@ -153,29 +170,33 @@ export default function Form({
                 <img src={question} alt="question" width="15" height="15" />
               </button>
             </div>
-            <select
-              name="method"
-              value={request.method}
-              onChange={(e) => {
-                regex.method.test(e.target.value) &&
-                  setRequest({
-                    ...request,
-                    method: e.target.value,
-                    body:
-                      e.target.value === "get"
-                        ? [{ key: "", value: "" }]
-                        : request.body,
-                  });
-              }}
-            >
-              <option value="get">GET</option>
-              <option value="post">POST</option>
-              <option value="put">PUT</option>
-              <option value="delete">DELETE</option>
-            </select>
-            {errors.method ? (
-              <p>Uniquement les méthodes GET, POST, PUT et DELETE</p>
-            ) : null}
+            <div>
+              <select
+                name="method"
+                value={request.method}
+                onChange={(e) => {
+                  regex.method.test(e.target.value) &&
+                    setRequest({
+                      ...request,
+                      method: e.target.value,
+                      body:
+                        e.target.value === "get"
+                          ? [{ key: "", value: "" }]
+                          : request.body,
+                    });
+                }}
+              >
+                <option value="get">GET</option>
+                <option value="post">POST</option>
+                <option value="put">PUT</option>
+                <option value="delete">DELETE</option>
+              </select>
+              {errors.method ? (
+                <p className="error">
+                  Uniquement les méthodes GET, POST, PUT et DELETE
+                </p>
+              ) : null}
+            </div>
             <div className="flex">
               <label className="label-title">
                 {english ? translation.en.endpoint : translation.fr.endpoint}
@@ -190,14 +211,19 @@ export default function Form({
                 <img src={question} alt="question" width="15" height="15" />
               </button>
             </div>
-            <input
-              type="text"
-              name="endpoint"
-              value={request.endpoint}
-              onChange={(e) =>
-                setRequest({ ...request, endpoint: e.target.value })
-              }
-            />
+            <div>
+              <input
+                type="text"
+                name="endpoint"
+                value={request.endpoint}
+                onChange={(e) => verifyData(e, regex.endpoint)}
+              />
+              {errors.endpoint ? (
+                <p className="error">
+                  Certains caractères spéciaux ne sont pas acceptés
+                </p>
+              ) : null}
+            </div>
           </div>
           <div
             className={`builder-form flex-column ${

@@ -53,7 +53,7 @@ export default function Result({ request, lang, step }) {
                 onMouseLeave={() => setActiveEndpoint(false)}
                 className={activeEndpoint ? "activeEndpoint" : ""}
               >
-                {endpoint}
+                {endpoint[0] === "/" ? endpoint : `/${endpoint}`}
               </span>
               <span
                 onMouseEnter={() => setActiveParams(true)}
@@ -85,7 +85,11 @@ export default function Result({ request, lang, step }) {
                       <p key={index}>
                         {"    "}
                         {el.key} :{" "}
-                        {parseInt(el.value) ? `${el.value}` : `"${el.value}"`}
+                        {parseInt(el.value) ||
+                        el.value === "true" ||
+                        el.value === "false"
+                          ? `${el.value}`
+                          : `"${el.value}"`}{" "}
                       </p>
                     );
                   })}
@@ -115,7 +119,7 @@ export default function Result({ request, lang, step }) {
                 onMouseLeave={() => setActiveEndpoint(false)}
                 className={activeEndpoint ? "activeEndpoint" : ""}
               >
-                {endpoint === "" ? "/" : endpoint}
+                {endpoint[0] === "/" ? endpoint : `/${endpoint}`}
               </span>
               <span
                 onMouseEnter={() => setActiveParams(true)}
@@ -140,7 +144,11 @@ export default function Result({ request, lang, step }) {
                     <p key={index}>
                       {"    "}
                       {el.key} :{" "}
-                      {parseInt(el.value) ? `${el.value}` : `"${el.value}"`}
+                      {parseInt(el.value) ||
+                      el.value === "true" ||
+                      el.value === "false"
+                        ? `${el.value}`
+                        : `"${el.value}"`}{" "}
                     </p>
                   ))}
                 &#125;
@@ -162,7 +170,11 @@ export default function Result({ request, lang, step }) {
                     <p key={index}>
                       {"    "}
                       {el.key} :{" "}
-                      {parseInt(el.value) ? `${el.value}` : `"${el.value}"`}
+                      {parseInt(el.value) ||
+                      el.value === "true" ||
+                      el.value === "false"
+                        ? `${el.value}`
+                        : `"${el.value}"`}
                     </p>
                   ))}
                 &#125;

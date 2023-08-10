@@ -5,6 +5,7 @@ body {
 button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 button:focus {
@@ -43,15 +44,13 @@ button:focus {
   gap: 1rem;
 }
 
-.result {
-  justify-content: space-evenly;
-}
-
 .result > div {
+  height: 100%;
   padding: 1rem;
   gap: 3rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .result-container {
@@ -183,15 +182,16 @@ h3 + h5 {
 
 .title-bar {
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
 }
 
 .logo {
-  width: 100px;
+  width: 80px;
 }
 
 .title {
-  width: 400px;
+  width: 350px;
 }
 
 .footer {
@@ -211,6 +211,11 @@ h3 + h5 {
 
 .lang-active {
   text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 0.75rem;
 }
 
 @media screen and (max-width: 1000px) {
