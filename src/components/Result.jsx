@@ -1,7 +1,8 @@
-import "./App.css";
-import "./tutorial.css";
-import { translation } from "./data";
 import { useState } from "react";
+import PropTypes from "prop-types";
+import "../App.css";
+import "./tutorial/tutorial.css";
+import { translation } from "./utils/data";
 
 /* eslint-disable react/prop-types */
 export default function Result({ request, lang, step }) {
@@ -108,7 +109,7 @@ export default function Result({ request, lang, step }) {
           <div className="flex result-container">
             <span className="methodStyle">{method}</span>
             <p>
-              "
+              &quot;
               <span
                 onMouseEnter={() => setActiveEndpoint(true)}
                 onMouseLeave={() => setActiveEndpoint(false)}
@@ -123,7 +124,7 @@ export default function Result({ request, lang, step }) {
               >
                 {paramsStringBack}
               </span>
-              "
+              &quot;
             </p>
           </div>
           <div className={activeParams ? "activeParams" : ""}>
@@ -175,3 +176,9 @@ export default function Result({ request, lang, step }) {
     </div>
   );
 }
+
+Result.propTypes = {
+  request: PropTypes.object,
+  lang: PropTypes.string,
+  step: PropTypes.number,
+};

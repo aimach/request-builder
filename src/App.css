@@ -195,7 +195,7 @@ h3 + h5 {
 }
 
 .footer {
-  width: 20%;
+  justify-content: center;
   margin: auto;
   align-items: center;
   color: #8c2198;

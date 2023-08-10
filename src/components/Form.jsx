@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
-import "./App.css";
-import "./tutorial.css";
+import "../App.css";
+import "./tutorial/tutorial.css";
+import PropTypes from "prop-types";
 
 import Result from "./Result";
-import question from "./assets/question.png";
-import close from "./assets/close.png";
-import { translation } from "./data";
+import question from "../assets/question.png";
+import close from "../assets/close.png";
+import { translation } from "./utils/data";
 
-function Form({ lang, setShowModal, setModalContent, step, showTutorial }) {
+export default function Form({
+  lang,
+  setShowModal,
+  setModalContent,
+  step,
+  showTutorial,
+}) {
   const english = lang === "en";
 
   const initialRequest = {
@@ -459,4 +466,10 @@ function Form({ lang, setShowModal, setModalContent, step, showTutorial }) {
   );
 }
 
-export default Form;
+Form.propTypes = {
+  lang: PropTypes.string,
+  setShowModal: PropTypes.func,
+  setModalContent: PropTypes.func,
+  step: PropTypes.number,
+  showTutorial: PropTypes.bool,
+};

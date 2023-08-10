@@ -1,5 +1,6 @@
-import "./App.css";
-import { infos, translation } from "./data";
+import "../App.css";
+import { infos, translation } from "./utils/data";
+import PropTypes from "prop-types";
 
 export default function Modal({ setShowModal, modalContent, lang }) {
   const information = infos.filter((el) => el.name === modalContent);
@@ -20,3 +21,9 @@ export default function Modal({ setShowModal, modalContent, lang }) {
     </div>
   );
 }
+
+Modal.propTypes = {
+  setShowModal: PropTypes.func,
+  modalContent: PropTypes.string,
+  lang: PropTypes.string,
+};

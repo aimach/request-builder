@@ -1,14 +1,15 @@
-import { translation } from "./data";
-import "./App.css";
+import { translation } from "../utils/data";
+import "../../App.css";
 import "./tutorial.css";
-import FirstStep from "./components/tutorial/firstStep";
-import SecondStep from "./components/tutorial/SecondStep";
-import ThirdStep from "./components/tutorial/ThirdStep";
-import FourthStep from "./components/tutorial/FourthStep";
-import FifthStep from "./components/tutorial/FifthStep";
-import SixthStep from "./components/tutorial/SixthStep";
-import SeventhStep from "./components/tutorial/SeventhStep";
-import EighthStep from "./components/tutorial/EighthStep";
+import PropTypes from "prop-types";
+import FirstStep from "./firstStep";
+import SecondStep from "./SecondStep";
+import ThirdStep from "./ThirdStep";
+import FourthStep from "./FourthStep";
+import FifthStep from "./FifthStep";
+import SixthStep from "./SixthStep";
+import SeventhStep from "./SeventhStep";
+import EighthStep from "./EighthStep";
 export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
   const english = lang === "en";
 
@@ -60,3 +61,10 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
     </>
   );
 }
+
+Tutorial.propTypes = {
+  lang: PropTypes.string,
+  setShowTutorial: PropTypes.func,
+  setStep: PropTypes.func,
+  step: PropTypes.number,
+};

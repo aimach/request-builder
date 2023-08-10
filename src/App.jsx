@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import Modal from "./Modal";
-import Form from "./Form";
-import Header from "./Header";
-import Footer from "./Footer";
-import Tutorial from "./Tutorial";
+import Modal from "./components/Modal";
+import Form from "./components/Form";
+import Header from "./components/common/Header";
+import Footer from "./components/common/Footer";
+import Tutorial from "./components/tutorial/Tutorial";
 
 function App() {
   // LANGUAGE STATE

@@ -1,6 +1,8 @@
 import wild from "../../assets/wild.png";
 import "../../App.css";
-import { translation, tutorial } from "../../data";
+import { translation, tutorial } from "../utils/data";
+import PropTypes from "prop-types";
+
 export default function FirstStep({ lang }) {
   const english = lang === "en";
 
@@ -37,3 +39,7 @@ export default function FirstStep({ lang }) {
     </>
   );
 }
+
+FirstStep.propTypes = {
+  lang: PropTypes.string,
+};

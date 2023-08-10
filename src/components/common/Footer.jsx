@@ -1,6 +1,7 @@
-import "./App.css";
-import wild from "./assets/wild.png";
-import { translation } from "./data";
+import "../../App.css";
+import wild from "../../assets/wild.png";
+import { translation } from "../utils/data";
+import PropTypes from "prop-types";
 
 export default function Footer({ lang }) {
   const english = lang === "en";
@@ -18,3 +19,7 @@ export default function Footer({ lang }) {
     </div>
   );
 }
+
+Footer.propTypes = {
+  lang: PropTypes.string,
+};

@@ -1,4 +1,5 @@
-import { tutorial } from "../../data";
+import { tutorial } from "../utils/data";
+import PropTypes from "prop-types";
 
 export default function SeventhStep({ lang }) {
   const english = lang === "en";
@@ -24,3 +25,7 @@ export default function SeventhStep({ lang }) {
     </>
   );
 }
+
+SeventhStep.propTypes = {
+  lang: PropTypes.string,
+};

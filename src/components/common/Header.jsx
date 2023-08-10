@@ -1,7 +1,7 @@
-import "./App.css";
-import { translation } from "./data";
-import logo from "./assets/logo.svg";
-import title from "./assets/title.png";
+import "../../App.css";
+import logo from "../../assets/logo.svg";
+import title from "../../assets/title.png";
+import PropTypes from "prop-types";
 
 export default function Header({
   lang,
@@ -20,16 +20,18 @@ export default function Header({
           <img src={title} alt="title" className="title" />
         </div>
         <div className={step === 2 ? `tutoStyle` : ""}>
-          <button
-            type="button"
-            className="button-add"
-            onClick={() => {
-              setShowTutorial(true);
-              setStep(1);
-            }}
-          >
-            Tutorial
-          </button>
+          {window.innerWidth > 1000 ? (
+            <button
+              type="button"
+              className="button-add"
+              onClick={() => {
+                setShowTutorial(true);
+                setStep(1);
+              }}
+            >
+              Tuto
+            </button>
+          ) : null}
           <button
             type="button"
             onClick={() => setLang("en")}
@@ -49,3 +51,11 @@ export default function Header({
     </header>
   );
 }
+
+Header.propTypes = {
+  lang: PropTypes.string,
+  setLang: PropTypes.func,
+  setShowTutorial: PropTypes.func,
+  step: PropTypes.number,
+  setStep: PropTypes.func,
+};

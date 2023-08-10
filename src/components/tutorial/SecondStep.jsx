@@ -1,4 +1,5 @@
-import { tutorial } from "../../data";
+import { tutorial } from "../utils/data";
+import PropTypes from "prop-types";
 
 export default function SecondStep({ lang }) {
   const english = lang === "en";
@@ -16,3 +17,7 @@ export default function SecondStep({ lang }) {
     </>
   );
 }
+
+SecondStep.propTypes = {
+  lang: PropTypes.string,
+};
