@@ -28,6 +28,9 @@ const translation = {
     close: "Close",
     made: "Made with ❤️ by",
     for: "for",
+    errorSpecialChar: "Some special characters are not accepted",
+    errorNum: "Only numeric characters are accepted",
+    errorMethod: "Only GET, POST, PUT et DELETE methods",
   },
   fr: {
     title: "Request builder",
@@ -60,6 +63,9 @@ const translation = {
     close: "Fermer",
     made: "Made with ❤️ par",
     for: "pour",
+    errorSpecialChar: "Certains caractères spéciaux ne sont pas acceptés",
+    errorNum: "Seuls les caractères numériques sont acceptés",
+    errorMethod: "Uniquement les méthodes GET, POST, PUT et DELETE",
   },
 };
 
