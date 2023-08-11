@@ -36,12 +36,17 @@ function App() {
     const data = JSON.parse(value);
     const keys = Object.keys(data);
     const values = Object.values(data);
+    setRequest({ ...request, body: [{ key: "", value: "" }] });
     for (let i = 0; i < keys.length; i++) {
-      const keyAlreadyExists = request.body.some((el) => el.key === keys[i]);
-      if (!keyAlreadyExists)
-        request.body.push({ key: keys[i], value: values[i] });
+      // const keyAlreadyExists = request.body.some((el) => el.key === keys[i]);
+      // if (!keyAlreadyExists)
+      setRequest({
+        ...request,
+        body: [...request.body, { key: keys[i], value: values[i] }],
+      });
     }
   };
+  console.log(request.body);
 
   // ERROR STATE
   const [errors, setErrors] = useState({
