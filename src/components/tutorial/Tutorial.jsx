@@ -4,7 +4,6 @@ import translation from "../../translation/translation";
 import "../../assets/styles/common.css";
 import "./tutorial.css";
 import PropTypes from "prop-types";
-import FirstStep from "./FirstStep";
 import Step from "./Step";
 export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
   const { language } = useContext(LanguageContext);
@@ -44,11 +43,7 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
         </button>
       </div>
       <div className={`tutorial-content ${step < 6 ? "right" : "left"}`}>
-        {step === 1 ? (
-          <FirstStep lang={lang} />
-        ) : (
-          <Step lang={lang} step={step} />
-        )}
+        <Step lang={lang} step={step} />
       </div>
     </>
   );

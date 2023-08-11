@@ -6,7 +6,6 @@ const tutorial = [
         "RequestBuilder is a tool to help you build your HTTP requests and better understand their structure in ExpressJS.",
       secondParagraph:
         "This tool is intentionally kept simple as it is intended for those who are learning to make requests and use ExpressJS. It's not possible to create requests with complex URLs. The purpose of this tool is to help you understand the structure of a request and how to use it in your code.",
-      thirdParagraph: "Developed and maintained by",
     },
     fr: {
       title: "Bienvenue sur RequestBuilder !",
@@ -14,17 +13,16 @@ const tutorial = [
         "RequestBuilder est un outil pour t'aider à construire tes requêtes HTTP et te permettre de mieux comprendre leur structure dans ExpressJS.",
       secondParagraph:
         "Cet outil se veut volontairement simple car il est à destination de ceux qui apprennent à faire des requêtes et à utiliser ExpressJS. Il n'est pas possible de faire des requêtes avec une URL complexe car l'objectif est de t'aider à comprendre la structure d'une requête et comment tu dois l'utiliser dans ton code.",
-      thirdParagraph: "Développé et maintenu par",
     },
   },
   {
     en: {
       title: "Language",
-      firstParagraph: "Here, you can choose the language: English or French",
+      firstParagraph: "Here, you can choose the language: English or French.",
     },
     fr: {
       title: "Language",
-      firstParagraph: "Ici, tu peux choisir la langue : anglais ou français",
+      firstParagraph: "Ici, tu peux choisir la langue : anglais ou français.",
     },
   },
   {
@@ -32,15 +30,19 @@ const tutorial = [
       title: "The Form",
       firstParagraph:
         "On the left, there's a form where you can provide informations about your request.",
+      secondParagraph:
+        "For every field, you have a help button that displays a definition about the query item.",
       example:
-        "You can see that some fields are already filled: for the example of this tutorial, we want to retrieve all black and white western movies from the API, with a limit of 10 results.",
+        "You can see that some fields are already filled: for the example of this tutorial, we want to retrieve all black and white western movies from a movie API, with a limit of 10 results.",
     },
     fr: {
       title: "Le formulaire",
       firstParagraph:
         "A gauche, il y a un formulaire où tu peux renseigner les informations sur ta requête.",
+      secondParagraph:
+        "Pour chacun des champs, tu as un bouton d'aide qui te donnera une défintion de l'élément de la requête.",
       example:
-        "Des champs sont déjàs remplis : pour l'exemple de ce tutoriel, nous souhaitons récupérer de l'API tous les westerns en noir et blanc dans une limite de 10 résultats.",
+        "Des champs sont déjà remplis : pour l'exemple de ce tutoriel, nous souhaitons récupérer d'une API de films tous les westerns en noir et blanc dans une limite de 10 résultats.",
     },
   },
   {
@@ -113,7 +115,7 @@ const tutorial = [
       firstParagraph:
         "In the box, you can see the method and the route you must have in your router.",
       secondParagraph:
-        "The params and query objects are displayed so you can see what you receive on the backend side. Similarly, if you hover over the route elements, they are highlighted, and you see their counterparts on the client side.",
+        "You can also see the params and query objects that you receive on the server side. Similarly, if you hover over the route elements, they are highlighted, and you see their counterparts on the client side.",
       example:
         "Example : you can see that the dynamic part of params has been added ('/:type') to the route. You can observe the params and query objects you receive in your request.",
     },
@@ -122,7 +124,7 @@ const tutorial = [
       firstParagraph:
         "Dans l'encadré, tu peux voir la méthode et la route que tu dois avoir dans ton router.",
       secondParagraph:
-        "Les objets params et query sont affichés afin que tu puisses voir ce que tu reçois du côté backend. Là aussi, si tu passes la souris sur les éléments de la route, ils sont surlignés et tu vois leur pendant côté client.",
+        "Tu peux également voir les objets params et query que tu reçois côté serveur. Là aussi, si tu passes la souris sur les éléments de la route, ils sont surlignés et tu vois leur pendant côté client.",
       example:
         "Exemple : tu peux voir que dans la route la partie dynamique du params a été ajoutée ('/:type') et tu peux observer les deux objets params et query que tu reçois dans ta requête.",
     },
