@@ -6,9 +6,9 @@ import "./form.css";
 import "../tutorial/tutorial.css";
 import Result from "../result/Result";
 import question from "../../assets/img/question.png";
-import close from "../../assets/img/close.png";
 import translation from "../../translation/translation";
 import { initialRequest, tutorialRequest, regex } from "./formData";
+import InputKeyValue from "./inputKeyValue";
 
 export default function Form({
   setShowModal,
@@ -205,278 +205,27 @@ export default function Form({
               step === 5 ? `tuto-style` : ""
             }`}
           >
-            <div className="flex input-with-add">
-              <div>
-                <label className="label-title">
-                  {language === "en"
-                    ? translation.en.body
-                    : translation.fr.body}
-                </label>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowModal(true);
-                    setModalContent("body");
-                  }}
-                >
-                  <img src={question} alt="question" width="15" height="15" />
-                </button>
-              </div>
-              {request.method === "get" ? null : (
-                <button
-                  type="button"
-                  onClick={() =>
-                    setRequest({
-                      ...request,
-                      body: [...request.body, { key: "", value: "" }],
-                    })
-                  }
-                  disabled={request.method === "get"}
-                  className="button-color"
-                >
-                  {language === "en" ? translation.en.add : translation.fr.add}
-                </button>
-              )}
-            </div>
-            <div className="flex-column">
-              {request.body.map((element, index) => {
-                return (
-                  <div key={index} className="key-value-container">
-                    {language === "en"
-                      ? translation.en.key
-                      : translation.fr.key}
-                    <input
-                      type="text"
-                      name="bodyKey"
-                      value={request.body[index].key}
-                      onChange={(e) => {
-                        request.body[index].key = e.target.value;
-                        setRequest({
-                          ...request,
-                          body: [...request.body],
-                        });
-                      }}
-                      disabled={request.method === "get"}
-                    />
-                    {language === "en"
-                      ? translation.en.value
-                      : translation.fr.value}
-                    <input
-                      type="text"
-                      name="bodyValue"
-                      value={request.body[index].value}
-                      onChange={(e) => {
-                        request.body[index].value = e.target.value;
-                        setRequest({
-                          ...request,
-                          body: [...request.body],
-                        });
-                      }}
-                      disabled={request.method === "get"}
-                    />
-                    {request.body.length > 1 ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          const newBody = request.body.filter(
-                            (el) => el !== element
-                          );
-                          setRequest({
-                            ...request,
-                            body: newBody,
-                          });
-                        }}
-                      >
-                        <img
-                          src={close}
-                          alt="question"
-                          width="15"
-                          height="15"
-                        />
-                      </button>
-                    ) : null}
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex input-with-add">
-              <div>
-                <label className="label-title">
-                  {language === "en"
-                    ? translation.en.params
-                    : translation.fr.params}
-                </label>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowModal(true);
-                    setModalContent("params");
-                  }}
-                >
-                  <img src={question} alt="question" width="15" height="15" />
-                </button>
-              </div>
-              <button
-                type="button"
-                onClick={() =>
-                  setRequest({
-                    ...request,
-                    params: [...request.params, { key: "", value: "" }],
-                  })
-                }
-                className="button-color"
-              >
-                {language === "en" ? translation.en.add : translation.fr.add}
-              </button>
-            </div>
-            <div className="flex-column">
-              {request.params.map((param, index) => {
-                return (
-                  <div key={index} className="key-value-container">
-                    {language === "en"
-                      ? translation.en.key
-                      : translation.fr.key}
-                    <input
-                      type="text"
-                      name="paramKey"
-                      value={request.params[index].key}
-                      onChange={(e) => {
-                        request.params[index].key = e.target.value;
-                        setRequest({
-                          ...request,
-                          params: [...request.params],
-                        });
-                      }}
-                    />
-                    {language === "en"
-                      ? translation.en.value
-                      : translation.fr.value}
-                    <input
-                      type="text"
-                      name="paramValue"
-                      value={request.params[index].value}
-                      onChange={(e) => {
-                        request.params[index].value = e.target.value;
-                        setRequest({
-                          ...request,
-                          params: [...request.params],
-                        });
-                      }}
-                    />
-                    {request.params.length > 1 ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          const newParams = request.params.filter(
-                            (el) => el !== param
-                          );
-                          setRequest({
-                            ...request,
-                            params: newParams,
-                          });
-                        }}
-                      >
-                        <img
-                          src={close}
-                          alt="question"
-                          width="15"
-                          height="15"
-                        />
-                      </button>
-                    ) : null}
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex input-with-add">
-              <div>
-                <label className="label-title">
-                  {language === "en"
-                    ? translation.en.query
-                    : translation.fr.query}
-                </label>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setShowModal(true);
-                    setModalContent("query");
-                  }}
-                >
-                  <img src={question} alt="question" width="15" height="15" />
-                </button>
-              </div>
-              <button
-                type="button"
-                onClick={() =>
-                  setRequest({
-                    ...request,
-                    query: [...request.query, { key: "", value: "" }],
-                  })
-                }
-                className="button-color"
-              >
-                {language === "en" ? translation.en.add : translation.fr.add}
-              </button>
-            </div>
-            <div className="flex-column">
-              {request.query.map((query, index) => {
-                return (
-                  <div key={index} className="key-value-container">
-                    {language === "en"
-                      ? translation.en.key
-                      : translation.fr.key}
-                    <input
-                      type="text"
-                      name="queryKey"
-                      value={request.query[index].key}
-                      onChange={(e) => {
-                        request.query[index].key = e.target.value;
-                        setRequest({
-                          ...request,
-                          query: [...request.query],
-                        });
-                      }}
-                    />
-                    {language === "en"
-                      ? translation.en.value
-                      : translation.fr.value}
-                    <input
-                      type="text"
-                      name="paramValue"
-                      value={request.query[index].value}
-                      onChange={(e) => {
-                        request.query[index].value = e.target.value;
-                        setRequest({
-                          ...request,
-                          query: [...request.query],
-                        });
-                      }}
-                    />
-                    {request.query.length > 1 ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          const newquery = request.query.filter(
-                            (el) => el !== query
-                          );
-                          setRequest({
-                            ...request,
-                            query: newquery,
-                          });
-                        }}
-                      >
-                        <img
-                          src={close}
-                          alt="question"
-                          width="15"
-                          height="15"
-                        />
-                      </button>
-                    ) : null}
-                  </div>
-                );
-              })}
-            </div>
+            <InputKeyValue
+              setShowModal={setShowModal}
+              setModalContent={setModalContent}
+              setRequest={setRequest}
+              request={request}
+              name={"body"}
+            />
+            <InputKeyValue
+              setShowModal={setShowModal}
+              setModalContent={setModalContent}
+              setRequest={setRequest}
+              request={request}
+              name={"params"}
+            />
+            <InputKeyValue
+              setShowModal={setShowModal}
+              setModalContent={setModalContent}
+              setRequest={setRequest}
+              request={request}
+              name={"query"}
+            />
           </div>
         </form>
       </div>
