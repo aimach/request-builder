@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./components/help/Modal";
+import HelpModal from "./components/help/HelpModal";
 import Form from "./components/form/Form";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
@@ -9,7 +9,7 @@ import "./App.css";
 import { LanguageProvider } from "./context/languageContext";
 function App() {
   // MODAL STATES
-  const [showModal, setShowModal] = useState(false);
+  const [showHelpModal, setShowHelpModal] = useState(false);
   const [modalContent, setModalContent] = useState();
 
   // TUTORIAL STATES
@@ -18,8 +18,11 @@ function App() {
 
   return (
     <LanguageProvider>
-      {showModal && (
-        <Modal setShowModal={setShowModal} modalContent={modalContent} />
+      {showHelpModal && (
+        <HelpModal
+          setShowHelpModal={setShowHelpModal}
+          modalContent={modalContent}
+        />
       )}
       {showTutorial && (
         <Tutorial
@@ -30,7 +33,7 @@ function App() {
       )}
       <Header setShowTutorial={setShowTutorial} setStep={setStep} step={step} />
       <Form
-        setShowModal={setShowModal}
+        setShowHelpModal={setShowHelpModal}
         setModalContent={setModalContent}
         step={step}
         showTutorial={showTutorial}

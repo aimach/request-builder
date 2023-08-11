@@ -5,7 +5,7 @@ import question from "../../assets/img/question.png";
 import PropTypes from "prop-types";
 
 export default function SelectMethod({
-  setShowModal,
+  setShowHelpModal,
   setModalContent,
   setRequest,
   request,
@@ -16,13 +16,11 @@ export default function SelectMethod({
   return (
     <>
       <div className="flex">
-        <label className="label-title">
-          {language === "en" ? translation.en[name] : translation.fr[name]}
-        </label>
+        <label className="label-title">{translation[language][name]}</label>
         <button
           onClick={(e) => {
             e.preventDefault();
-            setShowModal(true);
+            setShowHelpModal(true);
             setModalContent(name);
           }}
         >
@@ -55,7 +53,7 @@ export default function SelectMethod({
 }
 
 SelectMethod.propTypes = {
-  setShowModal: PropTypes.func,
+  setShowHelpModal: PropTypes.func,
   setModalContent: PropTypes.func,
   setRequest: PropTypes.func,
   request: PropTypes.object,

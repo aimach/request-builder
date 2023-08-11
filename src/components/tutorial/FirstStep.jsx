@@ -9,28 +9,18 @@ export default function FirstStep() {
 
   return (
     <>
-      <h3>{language === "en" ? tutorial[0].en.title : tutorial[0].fr.title}</h3>
+      <h3>{tutorial[0][language].title}</h3>
+      <br />
+      <p>{tutorial[0][language].firstParagraph}</p>
+      <br />
+      <p>{tutorial[0][language].secondParagraph}</p>
       <br />
       <p>
-        {language === "en"
-          ? tutorial[0].en.firstParagraph
-          : tutorial[0].fr.firstParagraph}
-      </p>
-      <br />
-      <p>
-        {language === "en"
-          ? tutorial[0].en.secondParagraph
-          : tutorial[0].fr.secondParagraph}
-      </p>
-      <br />
-      <p>
-        {language === "en"
-          ? tutorial[0].en.thirdParagraph
-          : tutorial[0].fr.thirdParagraph}
+        {tutorial[0][language].thirdParagraph}
         <a href="https://github.com/aimach" target="_black" rel="noreferrer">
           Aimach
         </a>
-        {language === "en" ? translation.en.for : translation.fr.for}
+        {translation[language].for}
         <a href="//www.wildcodeschool.com/" target="_blank" rel="noreferrer">
           <img src={wild} width="50" alt="wild" />
         </a>

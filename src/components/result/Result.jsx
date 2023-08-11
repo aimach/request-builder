@@ -39,14 +39,8 @@ export default function Result({ request, step }) {
     <div className="flex-column result">
       <div className={`${step === 6 ? `tuto-style` : ""} `}>
         <div className={`flex-column ${step === 7 ? `tuto-style` : ""} `}>
-          <h3>
-            {language === "en" ? translation.en.client : translation.fr.client}
-          </h3>
-          <h5>
-            {language === "en"
-              ? translation.en.clientIntro
-              : translation.fr.clientIntro}
-          </h5>
+          <h3>{translation[language].client}</h3>
+          <h5>{translation[language].clientIntro}</h5>
           <div className="flex result-container">
             <span className="method-style">{method}</span>
             <p>
@@ -76,11 +70,7 @@ export default function Result({ request, step }) {
               </span>
             </p>
           </div>
-          <h5>
-            {language === "en"
-              ? translation.en.clientTitle
-              : translation.fr.clientTitle}
-          </h5>
+          <h5>{translation[language].clientTitle}</h5>
           {method !== "get" ? (
             body[0].key !== "" ? (
               <pre>
@@ -106,23 +96,12 @@ export default function Result({ request, step }) {
               <div>&#123;&#125;</div>
             )
           ) : (
-            <div>
-              {" "}
-              {language === "en"
-                ? translation.en.noBody
-                : translation.fr.noBody}
-            </div>
+            <div>{translation[language].noBody}</div>
           )}
         </div>
         <div className={`flex-column ${step === 8 ? `tuto-style` : ""} `}>
-          <h3>
-            {language === "en" ? translation.en.server : translation.fr.server}
-          </h3>
-          <h5>
-            {language === "en"
-              ? translation.en.serverIntro
-              : translation.fr.serverIntro}
-          </h5>
+          <h3>{translation[language].server}</h3>
+          <h5>{translation[language].serverIntro}</h5>
           <div className="flex result-container">
             <span className="method-style">{method}</span>
             <p>
@@ -145,11 +124,7 @@ export default function Result({ request, step }) {
             </p>
           </div>
           <div className={activeParams ? "active-params" : ""}>
-            <h5>
-              {language === "en"
-                ? translation.en.backParams
-                : translation.fr.backParams}
-            </h5>
+            <h5>{translation[language].backParams}</h5>
             {params[0].key !== "" ? (
               <pre>
                 &#123;
@@ -173,11 +148,7 @@ export default function Result({ request, step }) {
             )}
           </div>
           <div className={activeQuery ? "active-query" : ""}>
-            <h5>
-              {language === "en"
-                ? translation.en.backQuery
-                : translation.fr.backQuery}
-            </h5>
+            <h5>{translation[language].backQuery}</h5>
             {query[0].key !== "" ? (
               <pre>
                 &#123;

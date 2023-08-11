@@ -31,6 +31,10 @@ const translation = {
     errorSpecialChar: "Some special characters are not accepted",
     errorNum: "Only numeric characters are accepted",
     errorMethod: "Only GET, POST, PUT et DELETE methods",
+    next: "Next",
+    previous: "Previous",
+    here: "here",
+    and: "and",
   },
   fr: {
     title: "Request builder",
@@ -66,6 +70,10 @@ const translation = {
     errorSpecialChar: "Certains caractères spéciaux ne sont pas acceptés",
     errorNum: "Seuls les caractères numériques sont acceptés",
     errorMethod: "Uniquement les méthodes GET, POST, PUT et DELETE",
+    next: "Suivant",
+    previous: "Précédent",
+    here: "ici",
+    and: "et",
   },
 };
 

@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { regex } from "./formData";
 
 export default function InputText({
-  setShowModal,
+  setShowHelpModal,
   setModalContent,
   setRequest,
   request,
@@ -29,13 +29,11 @@ export default function InputText({
   return (
     <>
       <div className="flex">
-        <label className="label-title">
-          {language === "en" ? translation.en[name] : translation.fr[name]}
-        </label>
+        <label className="label-title">{translation[language][name]}</label>
         <button
           onClick={(e) => {
             e.preventDefault();
-            setShowModal(true);
+            setShowHelpModal(true);
             setModalContent(name);
           }}
           className="help"
@@ -52,11 +50,7 @@ export default function InputText({
           onChange={(e) => verifyData(e, regex[name])}
         />
         {errors[name] ? (
-          <p className="error">
-            {language === "en"
-              ? translation.en.errorSpecialChar
-              : translation.fr.errorSpecialChar}
-          </p>
+          <p className="error">{translation[language].errorSpecialChar}</p>
         ) : null}
       </div>
     </>
@@ -64,7 +58,7 @@ export default function InputText({
 }
 
 InputText.propTypes = {
-  setShowModal: PropTypes.func,
+  setShowHelpModal: PropTypes.func,
   setModalContent: PropTypes.func,
   setRequest: PropTypes.func,
   request: PropTypes.object,

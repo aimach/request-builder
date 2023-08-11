@@ -6,7 +6,7 @@ import close from "../../assets/img/close.png";
 import PropTypes from "prop-types";
 
 export default function InputKeyValue({
-  setShowModal,
+  setShowHelpModal,
   setModalContent,
   setRequest,
   request,
@@ -18,13 +18,11 @@ export default function InputKeyValue({
     <>
       <div className="flex input-with-add">
         <div>
-          <label className="label-title">
-            {language === "en" ? translation.en[name] : translation.fr[name]}
-          </label>
+          <label className="label-title">{translation[language][name]}</label>
           <button
             onClick={(e) => {
               e.preventDefault();
-              setShowModal(true);
+              setShowHelpModal(true);
               setModalContent(name);
             }}
           >
@@ -40,10 +38,10 @@ export default function InputKeyValue({
                 [name]: [...request[name], { key: "", value: "" }],
               })
             }
-            disabled={request.method === "get"}
+            disabled={request.method === "get" && name === "body"}
             className="button-color"
           >
-            {language === "en" ? translation.en.add : translation.fr.add}
+            {translation[language].add}
           </button>
         )}
       </div>
@@ -51,7 +49,7 @@ export default function InputKeyValue({
         {request[name].map((element, index) => {
           return (
             <div key={index} className="key-value-container">
-              {language === "en" ? translation.en.key : translation.fr.key}
+              {translation[language].key}
               <input
                 type="text"
                 name={`${name}Key`}
@@ -65,7 +63,7 @@ export default function InputKeyValue({
                 }}
                 disabled={name === "body" && request.method === "get"}
               />
-              {language === "en" ? translation.en.value : translation.fr.value}
+              {translation[language].value}
               <input
                 type="text"
                 name={`${name}Value`}
@@ -104,7 +102,7 @@ export default function InputKeyValue({
 }
 
 InputKeyValue.propTypes = {
-  setShowModal: PropTypes.func,
+  setShowHelpModal: PropTypes.func,
   setModalContent: PropTypes.func,
   setRequest: PropTypes.func,
   request: PropTypes.shape({

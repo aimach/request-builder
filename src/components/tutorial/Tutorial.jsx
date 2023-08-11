@@ -1,12 +1,13 @@
+import { useContext } from "react";
+import { LanguageContext } from "../../context/languageContext";
 import translation from "../../translation/translation";
 import "../../assets/styles/common.css";
 import "./tutorial.css";
 import PropTypes from "prop-types";
-import FirstStep from "./firstStep";
+import FirstStep from "./FirstStep";
 import Step from "./Step";
 export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
-  const english = lang === "en";
-  console.log(step); // 1
+  const { language } = useContext(LanguageContext);
 
   return (
     <>
@@ -14,10 +15,9 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
         <button
           type="button"
           onClick={() => setStep(step - 1)}
-          className="button-tuto"
-          disabled={step === 1}
+          className={`button-tuto ${step === 1 ? "hidden" : ""}`}
         >
-          Previous
+          {translation[language].previous}
         </button>
         {step < 8 ? (
           <button
@@ -28,7 +28,7 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
             }}
             className="button-tuto"
           >
-            Next
+            {translation[language].next}
           </button>
         ) : null}
 
@@ -40,7 +40,7 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
           }}
           className="button-tuto"
         >
-          {english ? translation.en.close : translation.fr.close}
+          {translation[language].close}
         </button>
       </div>
       <div className={`tutorial-content ${step < 6 ? "right" : "left"}`}>

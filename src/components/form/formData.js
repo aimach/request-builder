@@ -13,11 +13,11 @@ export const tutorialRequest = {
   port: 5000,
   method: "get",
   endpoint: "/api/movies",
-  params: [
-    { key: "type", value: "western" },
+  params: [{ key: "type", value: "western" }],
+  query: [
     { key: "color", value: "false" },
+    { key: "limit", value: "10" },
   ],
-  query: [{ key: "limit", value: "10" }],
   body: [{ key: "", value: "" }],
 };
 

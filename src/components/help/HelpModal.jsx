@@ -6,35 +6,27 @@ import translation from "../../translation/translation";
 import PropTypes from "prop-types";
 import { LanguageContext } from "../../context/languageContext";
 
-export default function Modal({ setShowModal, modalContent }) {
+export default function HelpModal({ setShowHelpModal, modalContent }) {
   const { language } = useContext(LanguageContext);
 
   return (
     <div className="background-modal">
       <div className="content-modal flex-column">
-        <h3>
-          {language === "en"
-            ? help.en[modalContent].title
-            : help.fr[modalContent].title}
-        </h3>
-        <p>
-          {language === "en"
-            ? help.en[modalContent].content
-            : help.fr[modalContent].content}
-        </p>
+        <h3>{help[language][modalContent].title}</h3>
+        <p>{help[language][modalContent].content}</p>
         <button
           type="button"
-          onClick={() => setShowModal(false)}
+          onClick={() => setShowHelpModal(false)}
           className="button-color"
         >
-          {language === "en" ? translation.en.close : translation.fr.close}
+          {translation[language].close}
         </button>
       </div>
     </div>
   );
 }
 
-Modal.propTypes = {
-  setShowModal: PropTypes.func,
+HelpModal.propTypes = {
+  setShowHelpModal: PropTypes.func,
   modalContent: PropTypes.string,
 };

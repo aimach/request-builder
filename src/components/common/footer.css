@@ -1,20 +1,20 @@
 .footer {
   justify-content: center;
-  margin: auto;
   align-items: center;
   color: #8c2198;
   font-size: 0.75rem;
-  margin: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .footer > a {
+  color: #8c2198;
   text-decoration: none;
-  color: #46eca4;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .footer > a:hover {
+  color: #46eca4;
   text-decoration: underline;
 }
 

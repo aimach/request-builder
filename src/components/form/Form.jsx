@@ -12,7 +12,7 @@ import translation from "../../translation/translation";
 import { initialRequest, tutorialRequest } from "./formData";
 
 export default function Form({
-  setShowModal,
+  setShowHelpModal,
   setModalContent,
   step,
   showTutorial,
@@ -51,7 +51,7 @@ export default function Form({
             className="button-color button-clear"
             onClick={() => setRequest(initialRequest)}
           >
-            {language === "en" ? translation.en.clear : translation.fr.clear}
+            {translation[language].clear}
           </button>
           <div
             className={`builder-form flex-column ${
@@ -59,7 +59,7 @@ export default function Form({
             }`}
           >
             <InputText
-              setShowModal={setShowModal}
+              setShowHelpModal={setShowHelpModal}
               setModalContent={setModalContent}
               setRequest={setRequest}
               request={request}
@@ -68,7 +68,7 @@ export default function Form({
               name={"host"}
             />
             <InputText
-              setShowModal={setShowModal}
+              setShowHelpModal={setShowHelpModal}
               setModalContent={setModalContent}
               setRequest={setRequest}
               request={request}
@@ -77,7 +77,7 @@ export default function Form({
               name={"port"}
             />
             <SelectMethod
-              setShowModal={setShowModal}
+              setShowHelpModal={setShowHelpModal}
               setModalContent={setModalContent}
               setRequest={setRequest}
               request={request}
@@ -85,7 +85,7 @@ export default function Form({
               name={"method"}
             />
             <InputText
-              setShowModal={setShowModal}
+              setShowHelpModal={setShowHelpModal}
               setModalContent={setModalContent}
               setRequest={setRequest}
               request={request}
@@ -100,21 +100,21 @@ export default function Form({
             }`}
           >
             <InputKeyValue
-              setShowModal={setShowModal}
+              setShowHelpModal={setShowHelpModal}
               setModalContent={setModalContent}
               setRequest={setRequest}
               request={request}
               name={"body"}
             />
             <InputKeyValue
-              setShowModal={setShowModal}
+              setShowHelpModal={setShowHelpModal}
               setModalContent={setModalContent}
               setRequest={setRequest}
               request={request}
               name={"params"}
             />
             <InputKeyValue
-              setShowModal={setShowModal}
+              setShowHelpModal={setShowHelpModal}
               setModalContent={setModalContent}
               setRequest={setRequest}
               request={request}
@@ -129,7 +129,7 @@ export default function Form({
 }
 
 Form.propTypes = {
-  setShowModal: PropTypes.func,
+  setShowHelpModal: PropTypes.func,
   setModalContent: PropTypes.func,
   step: PropTypes.number,
   showTutorial: PropTypes.bool,

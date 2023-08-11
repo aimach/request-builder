@@ -2,50 +2,32 @@ import { useContext } from "react";
 import tutorial from "./tutorial-data";
 import PropTypes from "prop-types";
 import { LanguageContext } from "../../context/languageContext";
+import "./tutorial.css";
 
 export default function Step({ step }) {
   const { language } = useContext(LanguageContext);
+  const contentTutorial = tutorial[step - 1][language];
   return (
     <>
-      <h3>
-        {language === "en"
-          ? tutorial[step - 1].en.title
-          : tutorial[step - 1].fr.title}
-      </h3>
+      <h3>{contentTutorial.title}</h3>
       <br />
-      <p>
-        {language === "en"
-          ? tutorial[step - 1].en.firstParagraph
-          : tutorial[step - 1].fr.firstParagraph}
-      </p>
-      {tutorial[step - 1].en.secondParagraph ? (
+      <p>{contentTutorial.firstParagraph}</p>
+      {contentTutorial.secondParagraph ? (
         <>
           <br />
-          <p>
-            {language === "en"
-              ? tutorial[step - 1].en.secondParagraph
-              : tutorial[step - 1].fr.secondParagraph}
-          </p>
+          <p>{contentTutorial.secondParagraph}</p>
         </>
       ) : null}
-      {tutorial[step - 1].en.thirdParagraph ? (
+      {contentTutorial.thirdParagraph ? (
         <>
           <br />
-          <p>
-            {language === "en"
-              ? tutorial[step - 1].en.thirdParagraph
-              : tutorial[step - 1].fr.thirdParagraph}
-          </p>
+          <p>{contentTutorial.thirdParagraph}</p>
         </>
       ) : null}
-      {tutorial[step - 1].en.example ? (
+      {contentTutorial.example ? (
         <>
           <br />
-          <p>
-            {language === "en"
-              ? tutorial[step - 1].en.example
-              : tutorial[step - 1].fr.example}
-          </p>
+          <p className="example">{contentTutorial.example}</p>
         </>
       ) : null}
     </>
