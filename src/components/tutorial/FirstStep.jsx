@@ -1,37 +1,36 @@
-import wild from "../../assets/wild.png";
-import "../../App.css";
-import { translation, tutorial } from "../utils/data";
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import wild from "../../assets/img/wild.png";
+import translation from "../../translation/translation";
+import tutorial from "./tutorial-data";
+import { LanguageContext } from "../../context/languageContext";
 
-export default function FirstStep({ lang }) {
-  const english = lang === "en";
+export default function FirstStep() {
+  const { language } = useContext(LanguageContext);
 
   return (
     <>
-      <h3>
-        {english ? tutorial.en.firstStep.title : tutorial.fr.firstStep.title}
-      </h3>
+      <h3>{language === "en" ? tutorial[0].en.title : tutorial[0].fr.title}</h3>
       <br />
       <p>
-        {english
-          ? tutorial.en.firstStep.firstContent
-          : tutorial.fr.firstStep.firstContent}
+        {language === "en"
+          ? tutorial[0].en.firstParagraph
+          : tutorial[0].fr.firstParagraph}
       </p>
       <br />
       <p>
-        {english
-          ? tutorial.en.firstStep.secondContent
-          : tutorial.fr.firstStep.secondContent}
+        {language === "en"
+          ? tutorial[0].en.secondParagraph
+          : tutorial[0].fr.secondParagraph}
       </p>
       <br />
       <p>
-        {english
-          ? tutorial.en.firstStep.thirdContent
-          : tutorial.fr.firstStep.thirdContent}
+        {language === "en"
+          ? tutorial[0].en.thirdParagraph
+          : tutorial[0].fr.thirdParagraph}
         <a href="https://github.com/aimach" target="_black" rel="noreferrer">
           Aimach
         </a>
-        {english ? translation.en.for : translation.fr.for}
+        {language === "en" ? translation.en.for : translation.fr.for}
         <a href="//www.wildcodeschool.com/" target="_blank" rel="noreferrer">
           <img src={wild} width="50" alt="wild" />
         </a>
@@ -39,7 +38,3 @@ export default function FirstStep({ lang }) {
     </>
   );
 }
-
-FirstStep.propTypes = {
-  lang: PropTypes.string,
-};

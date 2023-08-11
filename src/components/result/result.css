@@ -1,0 +1,39 @@
+.active-endpoint {
+  background-color: #d8e1f4;
+  border-radius: 0.25rem;
+}
+
+.active-params {
+  background-color: #d8faeb;
+  border-radius: 0.25rem;
+}
+
+.active-query {
+  background-color: #ffc7dc;
+  border-radius: 0.25rem;
+}
+
+.method-style {
+  background-color: #e7cdea;
+  border: 1px solid #8c2198;
+  color: #8c2198;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  margin-right: 2rem;
+}
+
+.result > div {
+  height: 100%;
+  padding: 1rem;
+  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.result-container {
+  padding: 1rem;
+  border: 1px solid #d9d9db;
+  border-radius: 0.5rem;
+  overflow-x: scroll;
+}

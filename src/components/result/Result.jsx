@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import "../App.css";
-import "./tutorial/tutorial.css";
-import { translation } from "./utils/data";
+import "../../assets/styles/common.css";
+import "./result.css";
+import "../tutorial/tutorial.css";
+import translation from "../../translation/translation";
+import { LanguageContext } from "../../context/languageContext";
 
-/* eslint-disable react/prop-types */
-export default function Result({ request, lang, step }) {
+export default function Result({ request, step }) {
   const { host, port, method, endpoint, body, params, query } = request;
-  const english = lang === "en";
+  const { language } = useContext(LanguageContext);
 
   // create params string
   const paramsStringBack = params
@@ -36,14 +37,18 @@ export default function Result({ request, lang, step }) {
 
   return (
     <div className="flex-column result">
-      <div className={`${step === 6 ? `tutoStyle` : ""} `}>
-        <div className={`flex-column ${step === 7 ? `tutoStyle` : ""} `}>
-          <h3>{english ? translation.en.client : translation.fr.client}</h3>
+      <div className={`${step === 6 ? `tuto-style` : ""} `}>
+        <div className={`flex-column ${step === 7 ? `tuto-style` : ""} `}>
+          <h3>
+            {language === "en" ? translation.en.client : translation.fr.client}
+          </h3>
           <h5>
-            {english ? translation.en.clientIntro : translation.fr.clientIntro}
+            {language === "en"
+              ? translation.en.clientIntro
+              : translation.fr.clientIntro}
           </h5>
           <div className="flex result-container">
-            <span className="methodStyle">{method}</span>
+            <span className="method-style">{method}</span>
             <p>
               http://
               {host}
@@ -51,28 +56,30 @@ export default function Result({ request, lang, step }) {
               <span
                 onMouseEnter={() => setActiveEndpoint(true)}
                 onMouseLeave={() => setActiveEndpoint(false)}
-                className={activeEndpoint ? "activeEndpoint" : ""}
+                className={activeEndpoint ? "active-endpoint" : ""}
               >
                 {endpoint[0] === "/" ? endpoint : `/${endpoint}`}
               </span>
               <span
                 onMouseEnter={() => setActiveParams(true)}
                 onMouseLeave={() => setActiveParams(false)}
-                className={activeParams ? "activeParams" : ""}
+                className={activeParams ? "active-params" : ""}
               >
                 {paramsStringFront}
               </span>
               <span
                 onMouseEnter={() => setActiveQuery(true)}
                 onMouseLeave={() => setActiveQuery(false)}
-                className={activeQuery ? "activeQuery" : ""}
+                className={activeQuery ? "active-query" : ""}
               >
                 {queryStringFront}
               </span>
             </p>
           </div>
           <h5>
-            {english ? translation.en.clientTitle : translation.fr.clientTitle}
+            {language === "en"
+              ? translation.en.clientTitle
+              : translation.fr.clientTitle}
           </h5>
           {method !== "get" ? (
             body[0].key !== "" ? (
@@ -101,39 +108,47 @@ export default function Result({ request, lang, step }) {
           ) : (
             <div>
               {" "}
-              {english ? translation.en.noBody : translation.fr.noBody}
+              {language === "en"
+                ? translation.en.noBody
+                : translation.fr.noBody}
             </div>
           )}
         </div>
-        <div className={`flex-column ${step === 8 ? `tutoStyle` : ""} `}>
-          <h3>{english ? translation.en.server : translation.fr.server}</h3>
+        <div className={`flex-column ${step === 8 ? `tuto-style` : ""} `}>
+          <h3>
+            {language === "en" ? translation.en.server : translation.fr.server}
+          </h3>
           <h5>
-            {english ? translation.en.serverIntro : translation.fr.serverIntro}
+            {language === "en"
+              ? translation.en.serverIntro
+              : translation.fr.serverIntro}
           </h5>
           <div className="flex result-container">
-            <span className="methodStyle">{method}</span>
+            <span className="method-style">{method}</span>
             <p>
               &quot;
               <span
                 onMouseEnter={() => setActiveEndpoint(true)}
                 onMouseLeave={() => setActiveEndpoint(false)}
-                className={activeEndpoint ? "activeEndpoint" : ""}
+                className={activeEndpoint ? "active-endpoint" : ""}
               >
                 {endpoint[0] === "/" ? endpoint : `/${endpoint}`}
               </span>
               <span
                 onMouseEnter={() => setActiveParams(true)}
                 onMouseLeave={() => setActiveParams(false)}
-                className={activeParams ? "activeParams" : ""}
+                className={activeParams ? "active-params" : ""}
               >
                 {paramsStringBack}
               </span>
               &quot;
             </p>
           </div>
-          <div className={activeParams ? "activeParams" : ""}>
+          <div className={activeParams ? "active-params" : ""}>
             <h5>
-              {english ? translation.en.backParams : translation.fr.backParams}
+              {language === "en"
+                ? translation.en.backParams
+                : translation.fr.backParams}
             </h5>
             {params[0].key !== "" ? (
               <pre>
@@ -157,9 +172,11 @@ export default function Result({ request, lang, step }) {
               <div>&#123;&#125;</div>
             )}
           </div>
-          <div className={activeQuery ? "activeQuery" : ""}>
+          <div className={activeQuery ? "active-query" : ""}>
             <h5>
-              {english ? translation.en.backQuery : translation.fr.backQuery}
+              {language === "en"
+                ? translation.en.backQuery
+                : translation.fr.backQuery}
             </h5>
             {query[0].key !== "" ? (
               <pre>
@@ -191,6 +208,5 @@ export default function Result({ request, lang, step }) {
 
 Result.propTypes = {
   request: PropTypes.object,
-  lang: PropTypes.string,
   step: PropTypes.number,
 };

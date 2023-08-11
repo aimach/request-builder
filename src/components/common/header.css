@@ -1,0 +1,28 @@
+.lang-active {
+  text-decoration: underline;
+}
+
+.logo {
+  width: 80px;
+}
+
+.title {
+  width: 350px;
+}
+
+.title-bar {
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .title {
+    width: 250px;
+  }
+
+  .title-bar {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

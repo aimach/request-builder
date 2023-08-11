@@ -1,0 +1,47 @@
+input,
+select {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d9d9db;
+  outline: none;
+  width: 50%;
+}
+
+input:hover {
+  outline: 1px solid #8c2198;
+}
+
+input:disabled:hover {
+  outline: none;
+}
+
+input::placeholder {
+  opacity: 0.5;
+}
+
+.error {
+  color: red;
+  font-size: 0.75rem;
+}
+
+.builder-form {
+  gap: 1rem;
+}
+
+.input-with-add {
+  justify-content: space-between;
+}
+
+.key-value-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.key-value-container > input {
+  width: 30%;
+}
+
+.label-title {
+  font-weight: 600;
+}

@@ -1,17 +1,12 @@
-import { translation } from "../utils/data";
-import "../../App.css";
+import translation from "../../translation/translation";
+import "../../assets/styles/common.css";
 import "./tutorial.css";
 import PropTypes from "prop-types";
 import FirstStep from "./firstStep";
-import SecondStep from "./SecondStep";
-import ThirdStep from "./ThirdStep";
-import FourthStep from "./FourthStep";
-import FifthStep from "./FifthStep";
-import SixthStep from "./SixthStep";
-import SeventhStep from "./SeventhStep";
-import EighthStep from "./EighthStep";
+import Step from "./Step";
 export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
   const english = lang === "en";
+  console.log(step); // 1
 
   return (
     <>
@@ -49,14 +44,11 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
         </button>
       </div>
       <div className={`tutorial-content ${step < 6 ? "right" : "left"}`}>
-        {step === 1 && <FirstStep lang={lang} />}
-        {step === 2 && <SecondStep lang={lang} />}
-        {step === 3 && <ThirdStep lang={lang} />}
-        {step === 4 && <FourthStep lang={lang} />}
-        {step === 5 && <FifthStep lang={lang} />}
-        {step === 6 && <SixthStep lang={lang} />}
-        {step === 7 && <SeventhStep lang={lang} />}
-        {step === 8 && <EighthStep lang={lang} />}
+        {step === 1 ? (
+          <FirstStep lang={lang} />
+        ) : (
+          <Step lang={lang} step={step} />
+        )}
       </div>
     </>
   );

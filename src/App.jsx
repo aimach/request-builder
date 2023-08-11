@@ -1,15 +1,13 @@
 import { useState } from "react";
-import "./App.css";
-import Modal from "./components/Modal";
-import Form from "./components/Form";
+import Modal from "./components/help/Modal";
+import Form from "./components/form/Form";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import Tutorial from "./components/tutorial/Tutorial";
-
+import "./assets/styles/common.css";
+import "./App.css";
+import { LanguageProvider } from "./context/languageContext";
 function App() {
-  // LANGUAGE STATE
-  const [lang, setLang] = useState("en");
-
   // MODAL STATES
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState();
@@ -19,38 +17,26 @@ function App() {
   const [step, setStep] = useState(0);
 
   return (
-    <>
+    <LanguageProvider>
       {showModal && (
-        <Modal
-          setShowModal={setShowModal}
-          modalContent={modalContent}
-          lang={lang}
-        />
+        <Modal setShowModal={setShowModal} modalContent={modalContent} />
       )}
       {showTutorial && (
         <Tutorial
-          lang={lang}
           setShowTutorial={setShowTutorial}
           setStep={setStep}
           step={step}
         />
       )}
-      <Header
-        lang={lang}
-        setLang={setLang}
-        setShowTutorial={setShowTutorial}
-        setStep={setStep}
-        step={step}
-      />
+      <Header setShowTutorial={setShowTutorial} setStep={setStep} step={step} />
       <Form
-        lang={lang}
         setShowModal={setShowModal}
         setModalContent={setModalContent}
         step={step}
         showTutorial={showTutorial}
       />
-      <Footer lang={lang} />
-    </>
+      <Footer />
+    </LanguageProvider>
   );
 }
 

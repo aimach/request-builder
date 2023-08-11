@@ -1,49 +1,22 @@
-import { useEffect, useState } from "react";
-import "../App.css";
-import "./tutorial/tutorial.css";
+import { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
-
-import Result from "./Result";
-import question from "../assets/question.png";
-import close from "../assets/close.png";
-import { translation } from "./utils/data";
+import { LanguageContext } from "../../context/languageContext";
+import "../../assets/styles/common.css";
+import "./form.css";
+import "../tutorial/tutorial.css";
+import Result from "../result/Result";
+import question from "../../assets/img/question.png";
+import close from "../../assets/img/close.png";
+import translation from "../../translation/translation";
+import { initialRequest, tutorialRequest, regex } from "./formData";
 
 export default function Form({
-  lang,
   setShowModal,
   setModalContent,
   step,
   showTutorial,
 }) {
-  const english = lang === "en";
-
-  const initialRequest = {
-    host: "localhost",
-    port: 5000,
-    method: "get",
-    endpoint: "",
-    params: [{ key: "", value: "" }],
-    query: [{ key: "", value: "" }],
-    body: [{ key: "", value: "" }],
-  };
-
-  useEffect(() => {
-    showTutorial
-      ? setRequest({
-          host: "localhost",
-          port: 5000,
-          method: "get",
-          endpoint: "/api/movies",
-          params: [
-            { key: "type", value: "western" },
-            { key: "color", value: "false" },
-          ],
-          query: [{ key: "limit", value: "10" }],
-          body: [{ key: "", value: "" }],
-        })
-      : setRequest(initialRequest);
-  }, [showTutorial]);
-
+  const { language } = useContext(LanguageContext);
   const [request, setRequest] = useState(initialRequest);
   const [errors, setErrors] = useState({
     host: false,
@@ -55,14 +28,12 @@ export default function Form({
     body: false,
   });
 
-  const regex = {
-    host: /^[ A-Za-z0-9_@./#&+-]*$/g,
-    port: /^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$/g,
-    method: /^(get|post|put|delete)$/g,
-    endpoint: /^[ A-Za-z0-9_@./#&+-]*$/g,
-    key: /^[a-zA-z_]+[a-zA-z0-9]*/g,
-  };
+  // IF TUTORIAL USE EXAMPLE REQUEST
+  useEffect(() => {
+    showTutorial ? setRequest(tutorialRequest) : setRequest(initialRequest);
+  }, [showTutorial]);
 
+  // VALIDATE DATA WITH REGEX
   const verifyData = (e, dataType) => {
     if (e.target.value.match(dataType) || e.target.value == "") {
       setRequest({ ...request, [e.target.name]: e.target.value });
@@ -85,24 +56,24 @@ export default function Form({
       <div>
         <form
           className={`flex-column builder-form ${
-            step === 3 ? `tutoStyle` : ""
+            step === 3 ? `tuto-style` : ""
           }`}
         >
           <button
             type="button"
-            className="button-help"
+            className="button-color button-clear"
             onClick={() => setRequest(initialRequest)}
           >
-            {english ? translation.en.clear : translation.fr.clear}
+            {language === "en" ? translation.en.clear : translation.fr.clear}
           </button>
           <div
             className={`builder-form flex-column ${
-              step === 4 ? `tutoStyle` : ""
+              step === 4 ? `tuto-style` : ""
             }`}
           >
             <div className="flex">
               <label className="label-title">
-                {english ? translation.en.host : translation.fr.host}
+                {language === "en" ? translation.en.host : translation.fr.host}
               </label>
               <button
                 onClick={(e) => {
@@ -131,7 +102,7 @@ export default function Form({
             </div>
             <div className="flex">
               <label className="label-title">
-                {english ? translation.en.port : translation.fr.port}
+                {language === "en" ? translation.en.port : translation.fr.port}
               </label>
               <button
                 onClick={(e) => {
@@ -158,7 +129,9 @@ export default function Form({
 
             <div className="flex">
               <label className="label-title">
-                {english ? translation.en.method : translation.fr.method}
+                {language === "en"
+                  ? translation.en.method
+                  : translation.fr.method}
               </label>
               <button
                 onClick={(e) => {
@@ -199,7 +172,9 @@ export default function Form({
             </div>
             <div className="flex">
               <label className="label-title">
-                {english ? translation.en.endpoint : translation.fr.endpoint}
+                {language === "en"
+                  ? translation.en.endpoint
+                  : translation.fr.endpoint}
               </label>
               <button
                 onClick={(e) => {
@@ -227,13 +202,15 @@ export default function Form({
           </div>
           <div
             className={`builder-form flex-column ${
-              step === 5 ? `tutoStyle` : ""
+              step === 5 ? `tuto-style` : ""
             }`}
           >
             <div className="flex input-with-add">
               <div>
                 <label className="label-title">
-                  {english ? translation.en.body : translation.fr.body}
+                  {language === "en"
+                    ? translation.en.body
+                    : translation.fr.body}
                 </label>
                 <button
                   onClick={(e) => {
@@ -255,9 +232,9 @@ export default function Form({
                     })
                   }
                   disabled={request.method === "get"}
-                  className="button-add"
+                  className="button-color"
                 >
-                  {english ? translation.en.add : translation.fr.add}
+                  {language === "en" ? translation.en.add : translation.fr.add}
                 </button>
               )}
             </div>
@@ -265,7 +242,9 @@ export default function Form({
               {request.body.map((element, index) => {
                 return (
                   <div key={index} className="key-value-container">
-                    {english ? translation.en.key : translation.fr.key}
+                    {language === "en"
+                      ? translation.en.key
+                      : translation.fr.key}
                     <input
                       type="text"
                       name="bodyKey"
@@ -279,7 +258,9 @@ export default function Form({
                       }}
                       disabled={request.method === "get"}
                     />
-                    {english ? translation.en.value : translation.fr.value}
+                    {language === "en"
+                      ? translation.en.value
+                      : translation.fr.value}
                     <input
                       type="text"
                       name="bodyValue"
@@ -321,7 +302,9 @@ export default function Form({
             <div className="flex input-with-add">
               <div>
                 <label className="label-title">
-                  {english ? translation.en.params : translation.fr.params}
+                  {language === "en"
+                    ? translation.en.params
+                    : translation.fr.params}
                 </label>
                 <button
                   onClick={(e) => {
@@ -341,16 +324,18 @@ export default function Form({
                     params: [...request.params, { key: "", value: "" }],
                   })
                 }
-                className="button-add"
+                className="button-color"
               >
-                {english ? translation.en.add : translation.fr.add}
+                {language === "en" ? translation.en.add : translation.fr.add}
               </button>
             </div>
             <div className="flex-column">
               {request.params.map((param, index) => {
                 return (
                   <div key={index} className="key-value-container">
-                    {english ? translation.en.key : translation.fr.key}
+                    {language === "en"
+                      ? translation.en.key
+                      : translation.fr.key}
                     <input
                       type="text"
                       name="paramKey"
@@ -363,7 +348,9 @@ export default function Form({
                         });
                       }}
                     />
-                    {english ? translation.en.value : translation.fr.value}
+                    {language === "en"
+                      ? translation.en.value
+                      : translation.fr.value}
                     <input
                       type="text"
                       name="paramValue"
@@ -404,7 +391,9 @@ export default function Form({
             <div className="flex input-with-add">
               <div>
                 <label className="label-title">
-                  {english ? translation.en.query : translation.fr.query}
+                  {language === "en"
+                    ? translation.en.query
+                    : translation.fr.query}
                 </label>
                 <button
                   onClick={(e) => {
@@ -424,16 +413,18 @@ export default function Form({
                     query: [...request.query, { key: "", value: "" }],
                   })
                 }
-                className="button-add"
+                className="button-color"
               >
-                {english ? translation.en.add : translation.fr.add}
+                {language === "en" ? translation.en.add : translation.fr.add}
               </button>
             </div>
             <div className="flex-column">
               {request.query.map((query, index) => {
                 return (
                   <div key={index} className="key-value-container">
-                    {english ? translation.en.key : translation.fr.key}
+                    {language === "en"
+                      ? translation.en.key
+                      : translation.fr.key}
                     <input
                       type="text"
                       name="queryKey"
@@ -446,7 +437,9 @@ export default function Form({
                         });
                       }}
                     />
-                    {english ? translation.en.value : translation.fr.value}
+                    {language === "en"
+                      ? translation.en.value
+                      : translation.fr.value}
                     <input
                       type="text"
                       name="paramValue"
@@ -487,13 +480,12 @@ export default function Form({
           </div>
         </form>
       </div>
-      <Result request={request} lang={lang} step={step} />
+      <Result request={request} step={step} />
     </div>
   );
 }
 
 Form.propTypes = {
-  lang: PropTypes.string,
   setShowModal: PropTypes.func,
   setModalContent: PropTypes.func,
   step: PropTypes.number,

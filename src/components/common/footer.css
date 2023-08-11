@@ -1,0 +1,23 @@
+.footer {
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  color: #8c2198;
+  font-size: 0.75rem;
+  margin: 1rem;
+}
+
+.footer > a {
+  text-decoration: none;
+  color: #46eca4;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.footer > a:hover {
+  text-decoration: underline;
+}
+
+.footer > a > img {
+  width: 30px;
+}
