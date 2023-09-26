@@ -21,6 +21,8 @@ export default function Result({ request, step }) {
     .map((param) => `/${param.value}`)
     .join("");
 
+  console.log({ endpoint });
+
   // create query string
   let queryStringFront = "";
   if (query[0].key !== "") {
@@ -124,6 +126,9 @@ export default function Result({ request, step }) {
                 className={activeParams ? "active-params" : ""}
               >
                 {paramsStringBack}
+              </span>
+              <span>
+                {endpoint === "" && paramsStringBack === "" ? "/" : ""}
               </span>
               &quot;
             </p>
