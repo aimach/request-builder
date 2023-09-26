@@ -53,7 +53,9 @@ export default function Result({ request, step }) {
                 onMouseLeave={() => setActiveEndpoint(false)}
                 className={activeEndpoint ? "active-endpoint" : ""}
               >
-                {endpoint[0] === "/" ? endpoint : `/${endpoint}`}
+                {endpoint[0] === "/" || endpoint[0] === undefined
+                  ? endpoint
+                  : `/${endpoint}`}
               </span>
               <span
                 onMouseEnter={() => setActiveParams(true)}
