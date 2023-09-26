@@ -13,6 +13,14 @@
   background-color: #46eca4;
 }
 
+.close {
+  background-color: #e04040;
+}
+
+.close:hover {
+  background-color: #833131;
+}
+
 .button-tuto-container {
   position: fixed;
   z-index: 2;
