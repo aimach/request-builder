@@ -37,7 +37,7 @@ export default function Tutorial({ lang, setShowTutorial, setStep, step }) {
             setShowTutorial(false);
             setStep(0);
           }}
-          className="button-tuto"
+          className="button-tuto close"
         >
           {translation[language].close}
         </button>
