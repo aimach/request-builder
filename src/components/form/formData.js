@@ -27,4 +27,5 @@ export const regex = {
   method: /^(get|post|put|delete)$/g,
   endpoint: /^[ A-Za-z0-9_@./#&+-]*$/g,
   key: /^[a-zA-z_]+[a-zA-z0-9]*/g,
+  onlyNumber: /^\d+$/,
 };

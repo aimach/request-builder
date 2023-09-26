@@ -5,6 +5,7 @@ import "./result.css";
 import "../tutorial/tutorial.css";
 import translation from "../../translation/translation";
 import { LanguageContext } from "../../context/languageContext";
+import { regex } from "../form/formData";
 
 export default function Result({ request, step }) {
   const { host, port, method, endpoint, body, params, query } = request;
@@ -34,6 +35,8 @@ export default function Result({ request, step }) {
   const [activeEndpoint, setActiveEndpoint] = useState(false);
   const [activeParams, setActiveParams] = useState(false);
   const [activeQuery, setActiveQuery] = useState(false);
+
+  console.log(parseInt(params[0].value));
 
   return (
     <div className="flex-column result">
@@ -134,7 +137,7 @@ export default function Result({ request, step }) {
                     <p key={index}>
                       {"    "}
                       {el.key} :{" "}
-                      {parseInt(el.value) ||
+                      {el.value.match(regex.onlyNumber) ||
                       el.value === "true" ||
                       el.value === "false"
                         ? `${el.value}`
@@ -158,7 +161,7 @@ export default function Result({ request, step }) {
                     <p key={index}>
                       {"    "}
                       {el.key} :{" "}
-                      {parseInt(el.value) ||
+                      {el.value.match(regex.onlyNumber) ||
                       el.value === "true" ||
                       el.value === "false"
                         ? `${el.value}`
