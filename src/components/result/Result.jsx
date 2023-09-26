@@ -36,8 +36,6 @@ export default function Result({ request, step }) {
   const [activeParams, setActiveParams] = useState(false);
   const [activeQuery, setActiveQuery] = useState(false);
 
-  console.log(parseInt(params[0].value));
-
   return (
     <div className="flex-column result">
       <div className={`${step === 6 ? `tuto-style` : ""} `}>
@@ -114,7 +112,9 @@ export default function Result({ request, step }) {
                 onMouseLeave={() => setActiveEndpoint(false)}
                 className={activeEndpoint ? "active-endpoint" : ""}
               >
-                {endpoint[0] === "/" ? endpoint : `/${endpoint}`}
+                {endpoint[0] === "/" || endpoint[0] === undefined
+                  ? endpoint
+                  : `/${endpoint}`}
               </span>
               <span
                 onMouseEnter={() => setActiveParams(true)}
