@@ -29,7 +29,8 @@ export default function InputKeyValue({
             <img src={question} alt="question" width="15" height="15" />
           </button>
         </div>
-        {request.method === "get" && name === "body" ? null : (
+        {request.method === "get" &&
+        (name === "body" || name === "params") ? null : (
           <button
             type="button"
             onClick={() =>
