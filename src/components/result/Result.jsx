@@ -76,32 +76,34 @@ export default function Result({ request, step }) {
             </p>
           </div>
           <h5>{translation[language].clientTitle}</h5>
-          {method !== "get" ? (
-            body[0].key !== "" ? (
-              <pre>
-                &#123;
-                {body
-                  .filter((el) => el.key !== "")
-                  .map((el, index) => {
-                    return (
-                      <p key={index}>
-                        {"    "}
-                        {el.key} :{" "}
-                        {parseInt(el.value) ||
-                        el.value === "true" ||
-                        el.value === "false"
-                          ? `${el.value}`
-                          : `"${el.value}"`}
-                      </p>
-                    );
-                  })}
-                &#125;
-              </pre>
-            ) : (
-              <div>&#123;&#125;</div>
-            )
+          {method === "get" || method === "delete" ? (
+            <div>
+              {method === "get"
+                ? translation[language].noBodyInGet
+                : translation[language].noBodyInDelete}
+            </div>
+          ) : body[0].key !== "" ? (
+            <pre>
+              &#123;
+              {body
+                .filter((el) => el.key !== "")
+                .map((el, index) => {
+                  return (
+                    <p key={index}>
+                      {"    "}
+                      {el.key} :{" "}
+                      {parseInt(el.value) ||
+                      el.value === "true" ||
+                      el.value === "false"
+                        ? `${el.value}`
+                        : `"${el.value}"`}
+                    </p>
+                  );
+                })}
+              &#125;
+            </pre>
           ) : (
-            <div>{translation[language].noBody}</div>
+            <div>&#123;&#125;</div>
           )}
         </div>
         <div className={`flex-column ${step === 8 ? `tuto-style` : ""} `}>

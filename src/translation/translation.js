@@ -20,7 +20,8 @@ const translation = {
     server: "Server",
     clientIntro: "The request you send with fetch, axios or Postman",
     clientTitle: "req.body you must send via your endpoint",
-    noBody: "No body in get method",
+    noBodyInGet: "No body in get method",
+    noBodyInDelete: "No body in delete method",
     serverIntro:
       "The route you have in your router and the params and query objects of your request",
     backParams: "req.params you get from client request",
@@ -59,7 +60,8 @@ const translation = {
     frontFirstTitle: "Méthode et URL",
     clientTitle:
       "req.body que tu dois envoyer au serveur via ton point d'accès",
-    noBody: "Pas de body avec la méthode GET",
+    noBodyInGet: "Pas de body avec la méthode GET",
+    noBodyInDelete: "Pas de body avec la méthode DELETE",
     serverIntro:
       "La route que tu as dans ton router et les objets params et query de ta requête",
     backFirstTitle: "Méthode et route",
