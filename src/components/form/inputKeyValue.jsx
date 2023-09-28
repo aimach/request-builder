@@ -29,8 +29,9 @@ export default function InputKeyValue({
             <img src={question} alt="question" width="15" height="15" />
           </button>
         </div>
-        {request.method === "get" &&
-        (name === "body" || name === "params") ? null : (
+        {request.method === "get" ||
+        (request.method === "delete" &&
+          (name === "body" || name === "params")) ? null : (
           <button
             type="button"
             onClick={() =>
@@ -62,7 +63,10 @@ export default function InputKeyValue({
                     [name]: [...request[name]],
                   });
                 }}
-                disabled={name === "body" && request.method === "get"}
+                disabled={
+                  name === "body" &&
+                  (request.method === "get" || request.method === "delete")
+                }
               />
               {translation[language].value}
               <input
@@ -76,7 +80,10 @@ export default function InputKeyValue({
                     [name]: [...request[name]],
                   });
                 }}
-                disabled={name === "body" && request.method === "get"}
+                disabled={
+                  name === "body" &&
+                  (request.method === "get" || request.method === "delete")
+                }
               />
               {request[name].length > 1 ? (
                 <button
