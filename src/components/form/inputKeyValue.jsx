@@ -13,6 +13,9 @@ export default function InputKeyValue({
   name,
 }) {
   const { language } = useContext(LanguageContext);
+  const bodyAndGetOrDeleteMethod =
+    name === "body" &&
+    (request.method === "get" || request.method === "delete");
 
   return (
     <>
@@ -29,9 +32,7 @@ export default function InputKeyValue({
             <img src={question} alt="question" width="15" height="15" />
           </button>
         </div>
-        {request.method === "get" ||
-        (request.method === "delete" &&
-          (name === "body" || name === "params")) ? null : (
+        {bodyAndGetOrDeleteMethod || name === "params" ? null : (
           <button
             type="button"
             onClick={() =>
@@ -40,7 +41,7 @@ export default function InputKeyValue({
                 [name]: [...request[name], { key: "", value: "" }],
               })
             }
-            disabled={request.method === "get" && name === "body"}
+            disabled={bodyAndGetOrDeleteMethod}
             className="button-color"
           >
             {translation[language].add}
@@ -63,10 +64,7 @@ export default function InputKeyValue({
                     [name]: [...request[name]],
                   });
                 }}
-                disabled={
-                  name === "body" &&
-                  (request.method === "get" || request.method === "delete")
-                }
+                disabled={bodyAndGetOrDeleteMethod}
               />
               {translation[language].value}
               <input
@@ -80,10 +78,7 @@ export default function InputKeyValue({
                     [name]: [...request[name]],
                   });
                 }}
-                disabled={
-                  name === "body" &&
-                  (request.method === "get" || request.method === "delete")
-                }
+                disabled={bodyAndGetOrDeleteMethod}
               />
               {request[name].length > 1 ? (
                 <button
