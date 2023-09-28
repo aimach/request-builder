@@ -67,7 +67,7 @@ const tutorial = [
       firstParagraph:
         "In the second part, you can fill in the fields with the informations you want to send in your request.",
       secondParagraph:
-        "You can add a body (except for the GET method), params, and queries. The form works with key/value pair fields. You can add fields using the 'Add' button or remove them.",
+        "You can add a body (except for the GET and DELETE methods), params, and queries. The form works with key/value pair fields. You can add fields using the 'Add' button or remove them. You can only have 1 params as the tool doesn't allow complex URLs.",
       example:
         "Example: there is no body since we're using the GET method. We have 1 params (type) and 2 queries (color and limit).",
     },
@@ -76,7 +76,7 @@ const tutorial = [
       firstParagraph:
         "Dans la seconde partie, tu peux remplir les champs qui seront les informations que tu souhaites envoyer dans ta requête.",
       secondParagraph:
-        "Tu peux ajouter un body (excepté pour la méthode GET), des params et query. Le formulaire fonctionne avec des champs de type clé/valeur. Tu peux ajouter des champs avec le bouton 'Ajouter' ou en supprimer.",
+        "Tu peux ajouter un body (excepté pour les méthodes GET et DELETE), des params et query. Le formulaire fonctionne avec des champs de type clé/valeur. Tu peux ajouter des champs avec le bouton 'Ajouter' ou en supprimer. Tu ne peux avoir qu'1 seul params car l'outil ne permet pas de construire des URLs complexes.",
       example:
         "Exemple : il n'y a pas de body car nous utilisons la méthode GET. Nous avons 1 params (type) et 2 query (color et limit).",
     },
