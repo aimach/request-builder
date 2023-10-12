@@ -87,7 +87,7 @@ export default function Result({ request, step }) {
                       <p key={index}>
                         {"    "}
                         {el.key} :{" "}
-                        {parseInt(el.value) ||
+                        {el.value.match(regex.onlyNumber) ||
                         el.value === "true" ||
                         el.value === "false"
                           ? `${el.value}`
