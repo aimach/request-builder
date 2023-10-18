@@ -48,6 +48,7 @@ export default function Form({
               step === 3 ? `tuto-style` : ""
             }`}
           >
+            <h1>Titre de formulaire</h1>
             <button
               type="button"
               className="button-color button-clear"
