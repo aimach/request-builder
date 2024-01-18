@@ -3,17 +3,17 @@
 FROM node:latest as build-stage
 
 # Définir le répertoire de travail dans le conteneur
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copier les fichiers package.json et package-lock.json (ou yarn.lock) dans le répertoire de travail
-COPY package*.json ./
+COPY package*.json /usr/src/app/
 
 # Installer les dépendances
 RUN npm install
 # Pour Yarn, utilisez : RUN yarn install
 
 # Copier les fichiers et dossiers du projet dans le répertoire de travail
-COPY . .
+COPY . /usr/src/app/
 
 # Construire l'application React avec Vite
 RUN npm run build
