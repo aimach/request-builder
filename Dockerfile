@@ -24,7 +24,7 @@ RUN npm run build
 FROM nginx:stable-alpine as production-stage
 
 # Copier les fichiers construits de l'étape de construction dans le dossier de serveur
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY --from=build-stage /usr/src/app/dist /usr/share/nginx/html
 
 # Exposer le port (par défaut 80 pour Nginx)
 EXPOSE 80
