@@ -1,6 +1,6 @@
 # Étape de construction
 # Utiliser une image Node.js comme image de base pour la construction
-FROM node:lts-alpine
+FROM node:latest as build-stage
 
 # Définir le répertoire de travail dans le conteneur
 WORKDIR /app
