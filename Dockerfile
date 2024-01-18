@@ -7,8 +7,6 @@ WORKDIR /app
 
 # Copier les fichiers package.json et package-lock.json (ou yarn.lock) dans le répertoire de travail
 COPY package*.json ./
-# Si vous utilisez Yarn, copiez yarn.lock également
-# COPY yarn.lock ./
 
 # Installer les dépendances
 RUN npm install
