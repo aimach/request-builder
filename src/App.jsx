@@ -32,6 +32,9 @@ function App() {
         />
       )}
       <Header setShowTutorial={setShowTutorial} setStep={setStep} step={step} />
+      <div>
+        <h1>Formulario de registro</h1>
+      </div>
       <Form
         setShowHelpModal={setShowHelpModal}
         setModalContent={setModalContent}
