@@ -9,5 +9,6 @@ RUN npm install
 
 COPY public public
 COPY src src
+COPY vite.config.js ./
 
-CMD npm start
+CMD npm run dev
